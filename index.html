@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ali Ahmad Raza | Senior DevOps Engineer & System Administrator</title>
+  <meta name="description" content="Professional portfolio of Ali Ahmad Raza, a results-driven DevOps Engineer with 4+ years of experience in Cloud Infrastructure, DevOps Automation, CI/CD, and Linux Administration.">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Icon Libraries (FontAwesome & Devicon) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+</head>
+<body>
+
+  <!-- Background Lights -->
+  <div class="bg-radial-lights">
+    <div class="light-orb orb-1"></div>
+    <div class="light-orb orb-2"></div>
+    <div class="light-orb orb-3"></div>
+  </div>
+
+  <!-- Header Navigation -->
+  <header id="header">
+    <div class="container">
+      <a href="#" class="logo" id="logo-link">
+        <svg viewBox="0 0 100 100">
+          <path class="logo-path" d="M 50,50 C 35,30 15,30 15,50 C 15,70 35,70 50,50 C 65,30 85,30 85,50 C 85,70 65,70 50,50 Z" />
+        </svg>
+        <span>Ali Ahmad Raza</span>
+      </a>
+      
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      <nav id="nav-menu">
+        <ul>
+          <li><a href="#hero" class="active">Home</a></li>
+          <li><a href="#pipeline">Pipeline</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#terminal">CLI</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="Ali-Devops-23june.pdf" class="btn btn-secondary" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;" download><i class="fa-solid fa-download"></i> Resume</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="status-badge">
+            <span class="status-pulse"></span>
+            <span>STATUS: ACTIVE DEPLOYMENT</span>
+          </div>
+          <h1>Ali Ahmad Raza<br><span>DevOps Engineer</span></h1>
+          
+          <div class="typewriter-container">
+            <span>&gt; _</span><span id="typewriter"></span><span class="typewriter-cursor"></span>
+          </div>
+          
+          <p class="hero-description">
+            Results-driven DevOps Engineer with 4+ years of IT experience, specializing in Linux Administration, Cloud Infrastructure, Infrastructure as Code (IaC), Container Orchestration, and building secure DevSecOps pipelines.
+          </p>
+          
+          <div class="hero-actions">
+            <a href="#pipeline" class="btn btn-primary"><i class="fa-solid fa-terminal"></i> Interactive Pipeline</a>
+            <a href="#contact" class="btn btn-secondary"><i class="fa-regular fa-envelope"></i> Get In Touch</a>
+          </div>
+        </div>
+        
+        <div class="hero-visual">
+          <div class="devops-loop-container">
+            <div class="loop-glow"></div>
+            <svg class="infinity-svg" viewBox="0 0 300 200">
+              <defs>
+                <linearGradient id="infinityGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#38bdf8" />
+                  <stop offset="50%" stop-color="#c084fc" />
+                  <stop offset="100%" stop-color="#10b981" />
+                </linearGradient>
+              </defs>
+              <!-- Background static path -->
+              <path class="infinity-bg-path" d="M 150 100 C 100 40, 30 40, 30 100 C 30 160, 100 160, 150 100 C 200 40, 270 40, 270 100 C 270 160, 200 160, 150 100 Z" />
+              <!-- Animated overlay track -->
+              <path class="infinity-track" id="animated-infinity" d="M 150 100 C 100 40, 30 40, 30 100 C 30 160, 100 160, 150 100 C 200 40, 270 40, 270 100 C 270 160, 200 160, 150 100 Z" />
+              <!-- Moving particle -->
+              <circle r="6" class="loop-particle">
+                <animateMotion dur="6s" repeatCount="indefinite" path="M 150 100 C 100 40, 30 40, 30 100 C 30 160, 100 160, 150 100 C 200 40, 270 40, 270 100 C 270 160, 200 160, 150 100 Z" />
+              </circle>
+            </svg>
+            
+            <!-- Floating Tech Badges -->
+            <div class="floating-tech-badge badge-docker" title="Docker"><i class="devicon-docker-plain"></i></div>
+            <div class="floating-tech-badge badge-k8s" title="Kubernetes"><i class="devicon-kubernetes-plain"></i></div>
+            <div class="floating-tech-badge badge-aws" title="AWS"><i class="fa-brands fa-aws"></i></div>
+            <div class="floating-tech-badge badge-terraform" title="Terraform"><i class="devicon-terraform-plain"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Banner -->
+  <section class="stats-banner">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <h3>4+</h3>
+          <p>Years Experience</p>
+        </div>
+        <div class="stat-item">
+          <h3>100%</h3>
+          <p>IaC Automated</p>
+        </div>
+        <div class="stat-item">
+          <h3>100+</h3>
+          <p>Containers Deployed</p>
+        </div>
+        <div class="stat-item">
+          <h3>99.9%</h3>
+          <p>Uptime Optimized</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Pipeline Section -->
+  <section id="pipeline">
+    <div class="container">
+      <div class="section-header">
+        <h2>Interactive CI/CD Pipeline</h2>
+        <p>Click on the pipeline stages below to execute a simulated build and explore my automation capabilities.</p>
+      </div>
+      
+      <div class="pipeline-container">
+        <div class="pipeline-flow">
+          <div class="pipeline-line-bg"></div>
+          <div class="pipeline-line-progress" id="pipeline-progress"></div>
+          
+          <div class="pipeline-stage active" data-stage="commit" id="stage-commit">
+            <div class="stage-node"><i class="fa-solid fa-code-commit"></i></div>
+            <span class="stage-name">1. Commit</span>
+          </div>
+          
+          <div class="pipeline-stage" data-stage="build" id="stage-build">
+            <div class="stage-node"><i class="fa-solid fa-box-open"></i></div>
+            <span class="stage-name">2. Build</span>
+          </div>
+          
+          <div class="pipeline-stage" data-stage="security" id="stage-security">
+            <div class="stage-node"><i class="fa-solid fa-shield-halved"></i></div>
+            <span class="stage-name">3. DevSecOps</span>
+          </div>
+          
+          <div class="pipeline-stage" data-stage="deploy" id="stage-deploy">
+            <div class="stage-node"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+            <span class="stage-name">4. Deploy</span>
+          </div>
+        </div>
+        
+        <div class="pipeline-content-area">
+          <!-- Commit Stage Panel -->
+          <div class="pipeline-panel active" id="panel-commit">
+            <div class="panel-details">
+              <h3><i class="devicon-git-plain"></i> Version Control & CI Triggers</h3>
+              <p>
+                Every code push triggers automated GitHub Actions workflows. I structure repository workflows to isolate environment branches, enforce branch protections, and run sanity linting on codebase submissions.
+              </p>
+              <div class="panel-tools-list">
+                <div class="panel-tool-item">
+                  <div class="tool-icon-wrap"><i class="devicon-githubactions-plain colored"></i></div>
+                  <div class="tool-info">
+                    <h4>GitHub Actions</h4>
+                    <p>Orchestrating workflows, running linters, triggers on push/pull requests.</p>
+                  </div>
+                </div>
+                <div class="panel-tool-item">
+                  <div class="tool-icon-wrap"><i class="devicon-git-plain colored"></i></div>
+                  <div class="tool-info">
+                    <h4>Git & Versioning</h4>
+                    <p>Branching strategies, semantic versioning, and secure credential handling.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="pipeline-logs">
+              <div class="logs-header">
+                <div class="logs-dots">
+                  <span class="logs-dot logs-dot-red"></span>
+                  <span class="logs-dot logs-dot-yellow"></span>
+                  <span class="logs-dot logs-dot-green"></span>
+                </div>
+                <span class="logs-title">Runner Logs: Commit Stage</span>
+              </div>
+              <div class="logs-body" id="logs-commit">
+                <div class="log-line"><span class="timestamp">[11:55:01]</span><span class="content info">Triggered by commit: update core layout</span></div>
+                <div class="log-line"><span class="timestamp">[11:55:02]</span><span class="content info">Initializing runner environment...</span></div>
+                <div class="log-line"><span class="timestamp">[11:55:04]</span><span class="content">Checking out code from Git repository...</span></div>
+                <div class="log-line"><span class="timestamp">[11:55:05]</span><span class="content success">Success: Code checked out (v1.4.2)</span></div>
+                <div class="log-line"><span class="timestamp">[11:55:06]</span><span class="content">Running Shell check & YAML validation...</span></div>
+                <div class="log-line"><span class="timestamp">[11:55:07]</span><span class="content success">Success: Validation checks passed!</span></div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Build Stage Panel -->
+          <div class="pipeline-panel" id="panel-build">
+            <div class="panel-details">
+              <h3><i class="devicon-docker-plain colored"></i> Containerization & Building</h3>
+              <p>
+                Creating optimized multi-tier Docker images. I ensure microservices are containerized efficiently, keeping image sizes small via multi-stage builds and ensuring configuration data is separated from image assets.
+              </p>
+              <div class="panel-tools-list">
+                <div class="panel-tool-item">
+                  <div class="tool-icon-wrap"><i class="devicon-docker-plain colored"></i></div>
+                  <div class="tool-info">
+                    <h4>Docker Containerization</h4>
+                    <p>Writing clean Dockerfiles, managing base layer caching, multi-stage building.</p>
+                  </div>
+                </div>
+                <div class="panel-tool-item">
+                  <div class="tool-icon-wrap"><i class="devicon-ansible-plain colored"></i></div>
+                  <div class="tool-info">
+                    <h4>Ansible Configuration</h4>
+                    <p>Automating application dependencies and server environment setup using playbooks.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="pipeline-logs">
+              <div class="logs-header">
+                <div class="logs-dots">
+                  <span class="logs-dot logs-dot-red"></span>
+                  <span class="logs-dot logs-dot-yellow"></span>
+                  <span class="logs-dot logs-dot-green"></span>
+                </div>
+                <span class="logs-title">Runner Logs: Build Stage</span>
+              </div>
+              <div class="logs-body" id="logs-build">
+                <!-- Log content populated by JS -->
+              </div>
+            </div>
+          </div>
+          
+          <!-- Security Stage Panel -->
+          <div class="pipeline-panel" id="panel-security">
+            <div class="panel-details">
+              <h3><i class="fa-solid fa-shield-halved text-warning"></i> DevSecOps Security Scanning</h3>
+              <p>
+                Integrating shift-left security directly into the pipeline. I run SAST scanners (Bandit), secret leak detection tools (Gitleaks), and container vulnerability scans (Trivy) to guarantee that only secure, tested builds pass through.
+              </p>
+              <div class="panel-tools-list">
+                <div class="panel-tool-item">
+                  <div class="tool-icon-wrap"><i class="fa-solid fa-shield-halved text-warning"></i></div>
+                  <div class="tool-info">
+                    <h4>SAST & Vulnerability Scanning</h4>
+                    <p>Enforcing security scans using Bandit, safety checks, and Trivy container audits.</p>
+                  </div>
+                </div>
+                <div class="panel-tool-item">
+                  <div class="tool-icon-wrap"><i class="fa-solid fa-key text-warning"></i></div>
+                  <div class="tool-info">
+                    <h4>Secrets Detection & Compliance</h4>
+                    <p>Employing Gitleaks hooks to catch credentials and API tokens prior to commit push.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="pipeline-logs">
+              <div class="logs-header">
+                <div class="logs-dots">
+                  <span class="logs-dot logs-dot-red"></span>
+                  <span class="logs-dot logs-dot-yellow"></span>
+                  <span class="logs-dot logs-dot-green"></span>
+                </div>
+                <span class="logs-title">Runner Logs: Security Stage</span>
+              </div>
+              <div class="logs-body" id="logs-security">
+                <!-- Log content populated by JS -->
+              </div>
+            </div>
+          </div>
+          
+          <!-- Deploy Stage Panel -->
+          <div class="pipeline-panel" id="panel-deploy">
+            <div class="panel-details">
+              <h3><i class="devicon-kubernetes-plain colored"></i> IaC & Kubernetes Orchestration</h3>
+              <p>
+                Provisioning cloud architectures using Terraform and deploying workloads onto Kubernetes clusters. I configure services, volumes, replica sets, self-healing setups, and scale applications on-demand.
+              </p>
+              <div class="panel-tools-list">
+                <div class="panel-tool-item">
+                  <div class="tool-icon-wrap"><i class="devicon-kubernetes-plain colored"></i></div>
+                  <div class="tool-info">
+                    <h4>Kubernetes Deployments</h4>
+                    <p>Managing namespaces, Secrets, ConfigMaps, rolling updates, and self-healing systems.</p>
+                  </div>
+                </div>
+                <div class="panel-tool-item">
+                  <div class="tool-icon-wrap"><i class="devicon-terraform-plain colored"></i></div>
+                  <div class="tool-info">
+                    <h4>Terraform (IaC)</h4>
+                    <p>Writing modules for VPCs, Subnets, Security Groups, EC2 nodes on AWS.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="pipeline-logs">
+              <div class="logs-header">
+                <div class="logs-dots">
+                  <span class="logs-dot logs-dot-red"></span>
+                  <span class="logs-dot logs-dot-yellow"></span>
+                  <span class="logs-dot logs-dot-green"></span>
+                </div>
+                <span class="logs-title">Runner Logs: Deploy Stage</span>
+              </div>
+              <div class="logs-body" id="logs-deploy">
+                <!-- Log content populated by JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Matrix Section -->
+  <section id="skills" style="background: rgba(5,6,11,0.5);">
+    <div class="container">
+      <div class="section-header">
+        <h2>Expertise & Skill Matrix</h2>
+        <p>A breakdown of my professional capabilities, scripting efficiencies, and core system utilities.</p>
+      </div>
+      
+      <div class="skills-grid">
+        <!-- Category 1: Cloud & Infrastructure -->
+        <div class="skills-category glass-card">
+          <h3><i class="fa-solid fa-cloud"></i> Cloud & IaC</h3>
+          <div class="skills-list">
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">AWS Cloud Platform</span>
+                <span class="skill-val">85%</span>
+              </div>
+              <div class="skill-bar-wrap">
+                <div class="skill-bar-progress" data-width="85%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Terraform (IaC)</span>
+                <span class="skill-val">85%</span>
+              </div>
+              <div class="skill-bar-wrap">
+                <div class="skill-bar-progress" data-width="85%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Ansible Config Mgmt</span>
+                <span class="skill-val">80%</span>
+              </div>
+              <div class="skill-bar-wrap">
+                <div class="skill-bar-progress" data-width="80%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Category 2: Containers & Pipelines -->
+        <div class="skills-category glass-card">
+          <h3><i class="fa-solid fa-cubes"></i> Containers & CI/CD</h3>
+          <div class="skills-list">
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">GitHub Actions CI/CD</span>
+                <span class="skill-val">90%</span>
+              </div>
+              <div class="skill-bar-wrap">
+                <div class="skill-bar-progress" data-width="90%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Docker & Kubernetes</span>
+                <span class="skill-val">80%</span>
+              </div>
+              <div class="skill-bar-wrap">
+                <div class="skill-bar-progress" data-width="80%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">DevSecOps Security Scans</span>
+                <span class="skill-val">80%</span>
+              </div>
+              <div class="skill-bar-wrap">
+                <div class="skill-bar-progress" data-width="80%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Category 3: System Admin & Scripting -->
+        <div class="skills-category glass-card">
+          <h3><i class="fa-solid fa-terminal"></i> Systems & Admin</h3>
+          <div class="skills-list">
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Linux System Admin</span>
+                <span class="skill-val">90%</span>
+              </div>
+              <div class="skill-bar-wrap">
+                <div class="skill-bar-progress" data-width="90%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Shell Scripting</span>
+                <span class="skill-val">85%</span>
+              </div>
+              <div class="skill-bar-wrap">
+                <div class="skill-bar-progress" data-width="85%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Jira & ServiceNow ITSM</span>
+                <span class="skill-val">85%</span>
+              </div>
+              <div class="skill-bar-wrap">
+                <div class="skill-bar-progress" data-width="85%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience / Work History Section -->
+  <section id="experience">
+    <div class="container">
+      <div class="section-header">
+        <h2>Professional Experience</h2>
+        <p>My career journey highlighting engineering roles and infrastructure management.</p>
+      </div>
+      
+      <div class="timeline">
+        <!-- Experience Item 1: DevOps Role -->
+        <div class="timeline-item timeline-item-left">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content glass-card">
+            <span class="timeline-date">Oct 2021 – Present</span>
+            <h3 class="timeline-title">DevOps Automation Specialist</h3>
+            <h4 class="timeline-subtitle">Senior Analyst | HCL Tech</h4>
+            <ul class="timeline-bullets">
+              <li>Designed and built custom CI/CD pipelines in GitHub Actions, automating software builds, testing suites, and security check processes.</li>
+              <li>Provisioned scalable AWS infrastructure via Terraform including VPC networking components, Subnets, Security Groups, and EC2 nodes.</li>
+              <li>Engineered dynamic Ansible Playbooks to configure remote Linux nodes and deploy web applications instantly.</li>
+              <li>Containerized legacy applications with Docker and managed complex container scheduling using Kubernetes Deployments and self-healing configs.</li>
+              <li>Shifted security left by integrating Trivy, Bandit, Gitleaks, and package scanners directly into delivery checkpoints.</li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Experience Item 2: Linux SysAdmin Role -->
+        <div class="timeline-item timeline-item-right">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content glass-card">
+            <span class="timeline-date">Oct 2021 – Present</span>
+            <h3 class="timeline-title">Linux System Administrator</h3>
+            <h4 class="timeline-subtitle">Support Engineer | HCL Tech</h4>
+            <ul class="timeline-bullets">
+              <li>Managed core Linux operating parameters including user groups, file permissions, storage allocations (LVM), and kernel configurations.</li>
+              <li>Monitored systems health indicators (CPU loads, RAM allocations, disk usage profiles) to maintain maximum system stability.</li>
+              <li>Executed OS patches, kernel updates, and software version bumps in compliance with HCL enterprise change control standards.</li>
+              <li>Administered virtual machine lifecycle processes within VMware vCenter environments.</li>
+              <li>Resolved incidents, handled service requests, and documented changes via ticketing platforms (Jira & ServiceNow).</li>
+              <li>Automated server maintenance routines with Shell scripting, cutting manual operations significantly.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" style="background: rgba(5,6,11,0.5);">
+    <div class="container">
+      <div class="section-header">
+        <h2>Key Projects</h2>
+        <p>A look at recent workloads deployed and secured using DevOps methodologies.</p>
+      </div>
+      
+      <div class="projects-grid">
+        <div class="project-card glass-card">
+          <div class="project-header">
+            <div class="project-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <div class="project-links">
+              <a href="#" aria-label="GitHub Repository"><i class="fa-brands fa-github"></i></a>
+              <a href="#" aria-label="Live Demo website"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </div>
+          <h3>Cloaknote.online</h3>
+          <p>
+            A secure multi-tier note sharing platform engineered and deployed using modern container standards and DevSecOps processes.
+          </p>
+          <ul style="list-style: none; margin-bottom: 1.5rem; color: var(--text-secondary); font-size: 0.9rem; display: flex; flex-direction: column; gap: 0.5rem;">
+            <li><i class="fa-solid fa-check text-primary" style="margin-right: 0.5rem;"></i> Containerized web layers and database layers.</li>
+            <li><i class="fa-solid fa-check text-primary" style="margin-right: 0.5rem;"></i> Automatic scaling and self-healing configs on Kubernetes.</li>
+            <li><i class="fa-solid fa-check text-primary" style="margin-right: 0.5rem;"></i> Embedded SAST (Bandit), Trivy scans, and Gitleaks into Actions.</li>
+          </ul>
+          <div class="project-tech">
+            <span class="badge">Kubernetes</span>
+            <span class="badge">Docker</span>
+            <span class="badge">DevSecOps</span>
+            <span class="badge">GitHub Actions</span>
+          </div>
+        </div>
+        
+        <div class="project-card glass-card" style="opacity: 0.85;">
+          <div class="project-header">
+            <div class="project-icon"><i class="fa-solid fa-network-wired"></i></div>
+            <div class="project-links">
+              <a href="#" aria-label="GitHub Repository"><i class="fa-brands fa-github"></i></a>
+            </div>
+          </div>
+          <h3>Infrastructure-As-Code VPC Blueprint</h3>
+          <p>
+            An enterprise-ready AWS VPC infrastructure baseline module template written in Terraform to bootstrap new project instances quickly.
+          </p>
+          <ul style="list-style: none; margin-bottom: 1.5rem; color: var(--text-secondary); font-size: 0.9rem; display: flex; flex-direction: column; gap: 0.5rem;">
+            <li><i class="fa-solid fa-check text-primary" style="margin-right: 0.5rem;"></i> Multi-AZ public/private subnets and route alignments.</li>
+            <li><i class="fa-solid fa-check text-primary" style="margin-right: 0.5rem;"></i> Integrated NAT and internet gateway associations.</li>
+            <li><i class="fa-solid fa-check text-primary" style="margin-right: 0.5rem;"></i> Modulized components to ensure reuse across environments.</li>
+          </ul>
+          <div class="project-tech">
+            <span class="badge badge-purple">Terraform</span>
+            <span class="badge badge-purple">AWS VPC</span>
+            <span class="badge badge-purple">Security Groups</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Terminal Section -->
+  <section id="terminal">
+    <div class="container">
+      <div class="section-header">
+        <h2>Interactive Command Shell</h2>
+        <p>Type commands into this bash shell emulator to interact directly with my professional profile data.</p>
+      </div>
+      
+      <div class="terminal-widget">
+        <div class="terminal-titlebar">
+          <div class="logs-dots">
+            <span class="logs-dot logs-dot-red"></span>
+            <span class="logs-dot logs-dot-yellow"></span>
+            <span class="logs-dot logs-dot-green"></span>
+          </div>
+          <span class="logs-title">guest@raza-devops:~</span>
+          <span style="font-size: 0.8rem; color: var(--text-muted);"><i class="fa-solid fa-terminal"></i> bash</span>
+        </div>
+        
+        <div class="terminal-window" id="terminal-window">
+          <div class="terminal-welcome">
+            <p>Welcome to Ali Ahmad Raza's profile shell v1.2.0-stable</p>
+            <p>Type <span>help</span> to list available commands.</p>
+          </div>
+          <div class="terminal-output" id="terminal-output">
+            <!-- Command logs printed here -->
+          </div>
+          <div class="terminal-prompt-line">
+            <span class="terminal-prompt-prefix" id="terminal-prompt-prefix">guest@raza-devops:~$</span>
+            <input type="text" class="terminal-prompt-input" id="terminal-input" autofocus autocomplete="off" spellcheck="false" placeholder="Type a command...">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-header">
+        <h2>Get In Touch</h2>
+        <p>Have an interesting project, job opportunity, or just want to connect? Reach out via any channel below!</p>
+      </div>
+      
+      <div class="contact-cards-grid">
+        <a href="mailto:iamaliraza5955@gmail.com" class="contact-card glass-card reveal">
+          <div class="contact-card-glow email-glow"></div>
+          <div class="contact-card-icon"><i class="fa-solid fa-envelope"></i></div>
+          <h3>Email</h3>
+          <p>iamaliraza5955@gmail.com</p>
+          <span class="contact-card-action">Send Email <i class="fa-solid fa-arrow-right"></i></span>
+        </a>
+        
+        <a href="tel:+918127095955" class="contact-card glass-card reveal">
+          <div class="contact-card-glow phone-glow"></div>
+          <div class="contact-card-icon"><i class="fa-solid fa-phone"></i></div>
+          <h3>Phone</h3>
+          <p>+91-8127095955</p>
+          <span class="contact-card-action">Call Now <i class="fa-solid fa-arrow-right"></i></span>
+        </a>
+        
+        <div class="contact-card glass-card reveal">
+          <div class="contact-card-glow location-glow"></div>
+          <div class="contact-card-icon"><i class="fa-solid fa-location-dot"></i></div>
+          <h3>Location</h3>
+          <p>Delhi, India</p>
+          <span class="contact-card-action" style="opacity: 0.7;">Active (UTC+5:30)</span>
+        </div>
+        
+        <a href="https://linkedin.com/in/iamaliraza5955" target="_blank" rel="noopener noreferrer" class="contact-card glass-card reveal">
+          <div class="contact-card-glow linkedin-glow"></div>
+          <div class="contact-card-icon"><i class="fa-brands fa-linkedin-in"></i></div>
+          <h3>LinkedIn</h3>
+          <p>Ali Ahmad Raza</p>
+          <span class="contact-card-action">Connect <i class="fa-solid fa-arrow-right"></i></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Ali Ahmad Raza. All rights reserved.</p>
+      <div class="footer-tag">
+        <span>Designed &amp; engineered for performance</span>
+        <span style="margin: 0 0.5rem;">|</span>
+        <span>Built with <i class="fa-solid fa-heart"></i> and DevOps principles</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script Logic -->
+  <script src="script.js"></script>
+</body>
+</html>
