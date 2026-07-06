@@ -1,3 +1,9 @@
+// Force page to start at top on every load
+window.scrollTo(0, 0);
+if (history.scrollRestoration) {
+  history.scrollRestoration = 'manual';
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 
   // --- 1. Header Scroll & Active Section Watcher ---
@@ -380,18 +386,18 @@ Available commands:
 
           case 'neofetch':
             response = `
-<pre style="font-family: inherit; line-height: 1.2; display: flex; gap: 2rem; margin: 0;">
-<span style="color: var(--color-primary);">       ./\\
-      /  \\      <span style="color: var(--color-secondary);">guest@raza-devops</span>
-     /\\   \\     -----------------
-    /  \\   \\    OS: Ubuntu 22.04 LTS x86_64
-   /    \\   \\   Kernel: 5.15.0-76-generic
-  /  /\\  \\   \\  Uptime: 4 years, 3 months
- /  /  \\  \\   \\ Shell: bash 5.1.16
-/  /____\\  \\   \\CPU: AMD EPYC (Container node)
-/____________\\   \\Memory: 1024MB / 4096MB
-                Skills: AWS, K8s, Docker, Terraform</span>
-</pre>
+<pre style="font-family:inherit;line-height:1.35;margin:0;color:var(--color-primary);">       ./\\
+      /  \\      <span style="color:var(--color-secondary);font-weight:600;">ali@raza-devops</span>
+     /\\   \\     <span style="color:var(--text-muted);">──────────────────────────────</span>
+    /  \\   \\    <span style="color:var(--text-muted);">Role:</span>   Senior Analyst / DevOps Engineer
+   /    \\   \\   <span style="color:var(--text-muted);">Org:</span>    HCL Tech (Oct 2021 – Present)
+  /  /\\  \\   \\  <span style="color:var(--text-muted);">OS:</span>     Ubuntu 22.04 LTS x86_64
+ /  /  \\  \\   \\ <span style="color:var(--text-muted);">Shell:</span>  bash 5.1.16
+/  /____\\  \\   \\<span style="color:var(--text-muted);">Cloud:</span>  AWS, Terraform, Ansible
+/____________\\   <span style="color:var(--text-muted);">Cntr:</span>   Docker, Kubernetes
+               <span style="color:var(--text-muted);">CI/CD:</span>  GitHub Actions
+               <span style="color:var(--text-muted);">GitHub:</span> <a href="https://github.com/Decoder4399" target="_blank" style="color:var(--color-primary);">github.com/Decoder4399</a>
+               <span style="color:var(--text-muted);">Email:</span>  iamaliraza5955@gmail.com</pre>
             `;
             break;
 
