@@ -658,8 +658,8 @@ details[open] > .group-header .group-chevron { transform: rotate(180deg); }
   .generate-actions { flex-direction: column; }
   .generate-actions .btn { width: 100%; justify-content: center; }
   .modal-footer { flex-direction: column; gap: 1rem; align-items: stretch; }
-  .modal-actions { justify-content: center; }
-  .modal-actions .btn { flex: 1; justify-content: center; }
+  .modal-actions { justify-content: center; flex-wrap: wrap; }
+  .modal-actions .btn { flex: 1; justify-content: center; min-width: 0; }
 }
 
 @media (max-width: 480px) {

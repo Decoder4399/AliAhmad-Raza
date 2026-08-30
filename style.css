@@ -221,7 +221,7 @@ header.scrolled {
   border-bottom: 1px solid var(--border-glass);
   height: 62px;
 }
-header .container { display: flex; justify-content: space-between; align-items: center; }
+header .container { display: flex; justify-content: space-between; align-items: center; overflow: hidden; }
 
 .logo {
   display: flex;
@@ -241,7 +241,7 @@ header .container { display: flex; justify-content: space-between; align-items: 
   animation: logo-draw 4s linear infinite;
 }
 
-nav ul { display: flex; gap: clamp(0.5rem,1.2vw,1rem); list-style: none; align-items: center; flex-wrap: nowrap; margin-left: 1.5rem; }
+nav ul { display: flex; gap: clamp(0.3rem,0.8vw,0.7rem); list-style: none; align-items: center; flex-wrap: nowrap; margin-left: 0; }
 
 nav a {
   color: var(--text-secondary);
@@ -1018,12 +1018,17 @@ footer .footer-tag i { color:var(--color-warning); }
 }
 
 /* =============================================
-   RESPONSIVE — MOBILE (≤768px)
+   RESPONSIVE — COMPACT NAV (≤1100px)
    ============================================= */
-@media (max-width: 768px) {
-  :root { --section-pad: 5rem; }
+@media (max-width: 1100px) {
+  nav ul { gap: 0.3rem; }
+  nav a { font-size: 0.78rem; }
+}
 
-  /* Nav */
+/* =============================================
+   RESPONSIVE — TABLET NAV (≤900px)
+   ============================================= */
+@media (max-width: 900px) {
   .menu-toggle { display:flex; }
   nav {
     position:fixed; top:62px; left:0;
@@ -1038,11 +1043,18 @@ footer .footer-tag i { color:var(--color-warning); }
     z-index:150;
   }
   nav.open { transform:translateY(0); }
-  nav ul { flex-direction:column; gap:0; align-items:stretch; flex-wrap:nowrap; }
+  nav ul { flex-direction:column; gap:0; align-items:stretch; flex-wrap:nowrap; margin-left:0; }
   nav ul li { border-bottom:1px solid var(--border-glass); }
   nav ul li:last-child { border-bottom:none; margin-top:1rem; }
   nav a { display:block; padding:0.9rem 0; font-size:1rem; }
   nav a::after { display:none; }
+}
+
+/* =============================================
+   RESPONSIVE — MOBILE (≤768px)
+   ============================================= */
+@media (max-width: 768px) {
+  :root { --section-pad: 5rem; }
 
   /* Hero */
   .hero { padding-top:72px; min-height:100svh; }
