@@ -3,8 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ali Ahmad Raza | Senior DevOps Engineer & System Administrator</title>
-  <meta name="description" content="Professional portfolio of Ali Ahmad Raza, a results-driven DevOps Engineer with 4+ years of experience in Cloud Infrastructure, DevOps Automation, CI/CD, and Linux Administration.">
+  <title>Ali Ahmad Raza | DevOps & Cloud Engineer — AWS Architecture Lab</title>
+  <meta name="description" content="Interactive DevOps & Cloud Engineering portfolio. Explore AWS architectures, run infrastructure simulations, build IaC with DevSmith, and discover production-grade DevOps practices.">
+  <meta property="og:title" content="Ali Ahmad Raza | DevOps & Cloud Engineer">
+  <meta property="og:description" content="Interactive DevOps engineering portfolio featuring AWS architecture labs, infrastructure automation, and disaster recovery simulations.">
+  <meta property="og:type" content="website">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://ali-ahmad-raza.dev">
   
   <!-- CSS Stylesheets -->
   <link rel="stylesheet" href="style.css">
@@ -41,15 +46,15 @@
       <nav id="nav-menu">
         <ul>
           <li><a href="#hero" class="active">Home</a></li>
-          <li><a href="#pipeline">Pipeline</a></li>
-          <li><a href="#skills">Skills</a></li>
+          <li><a href="architecture.html">Architecture</a></li>
           <li><a href="#experience">Experience</a></li>
           <li><a href="#projects">Projects</a></li>
-          <li><a href="#terminal">CLI</a></li>
+          <li><a href="dr-lab.html">DR Lab</a></li>
           <li><a href="devsmith.html">DevSmith</a></li>
+          <li><a href="#terminal">Terminal</a></li>
           <li><a href="#contact">Contact</a></li>
-          <li><a href="https://github.com/Decoder4399" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding:0.45rem 1rem;font-size:0.82rem;"><i class="fa-brands fa-github"></i> GitHub</a></li>
-          <li><a href="Ali-Devops-23june.pdf" class="btn btn-primary" style="padding:0.45rem 1rem;font-size:0.82rem;" download><i class="fa-solid fa-download"></i> Resume</a></li>
+          <li><a href="https://github.com/Decoder4399" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding:0.4rem 0.75rem;font-size:0.82rem;"><i class="fa-brands fa-github"></i> GitHub</a></li>
+          <li><a href="Ali-Devops-23june.pdf" class="btn btn-primary" style="padding:0.4rem 0.75rem;font-size:0.82rem;" download><i class="fa-solid fa-download"></i> Resume</a></li>
         </ul>
       </nav>
     </div>
@@ -64,20 +69,30 @@
             <span class="status-pulse"></span>
             <span>STATUS: ACTIVE DEPLOYMENT</span>
           </div>
-          <h1>Ali Ahmad Raza<br><span>DevOps Engineer</span></h1>
-          
+          <h1>Ali Ahmad Raza<br><span>DevOps & Cloud Engineer</span></h1>
+
+          <div class="hero-tech-badges">
+            <span class="tech-badge"><i class="fa-brands fa-aws"></i> AWS</span>
+            <span class="tech-badge"><i class="devicon-terraform-plain"></i> Terraform</span>
+            <span class="tech-badge"><i class="devicon-kubernetes-plain"></i> Kubernetes</span>
+            <span class="tech-badge"><i class="devicon-docker-plain"></i> Docker</span>
+            <span class="tech-badge"><i class="fa-solid fa-code-branch"></i> CI/CD</span>
+            <span class="tech-badge"><i class="fa-solid fa-shield-halved"></i> DevSecOps</span>
+          </div>
+
           <div class="typewriter-container">
             <span>&gt; _</span><span id="typewriter"></span><span class="typewriter-cursor"></span>
           </div>
-          
+
           <p class="hero-description">
-            Results-driven DevOps Engineer with 4+ years of IT experience, specializing in Linux Administration, Cloud Infrastructure, Infrastructure as Code (IaC), Container Orchestration, and building secure DevSecOps pipelines.
+            Building reliable AWS infrastructure, automated delivery pipelines, and production-ready platforms. Specializing in Infrastructure as Code, Container Orchestration, and DevSecOps.
           </p>
-          
+
           <div class="hero-actions">
-            <a href="#pipeline" class="btn btn-primary"><i class="fa-solid fa-terminal"></i> Interactive Pipeline</a>
+            <a href="#projects" class="btn btn-primary"><i class="fa-solid fa-folder-open"></i> View Projects</a>
+            <a href="architecture.html" class="btn btn-secondary"><i class="fa-solid fa-diagram-project"></i> Architecture Lab</a>
             <a href="https://github.com/Decoder4399" target="_blank" rel="noopener noreferrer" class="btn btn-secondary"><i class="fa-brands fa-github"></i> GitHub</a>
-            <a href="#contact" class="btn btn-secondary"><i class="fa-regular fa-envelope"></i> Contact</a>
+            <a href="Ali-Devops-23june.pdf" class="btn btn-secondary" download><i class="fa-solid fa-download"></i> Resume</a>
           </div>
         </div>
         
@@ -345,109 +360,121 @@
   <section id="skills" style="background: rgba(5,6,11,0.5);">
     <div class="container">
       <div class="section-header">
-        <h2>Expertise & Skill Matrix</h2>
-        <p>A breakdown of my professional capabilities, scripting efficiencies, and core system utilities.</p>
+        <h2>Technology Stack</h2>
+        <p>Evidence-based overview of tools and platforms used in production environments.</p>
       </div>
-      
-      <div class="skills-grid">
-        <!-- Category 1: Cloud & Infrastructure -->
-        <div class="skills-category glass-card">
-          <h3><i class="fa-solid fa-cloud"></i> Cloud & IaC</h3>
-          <div class="skills-list">
-            <div class="skill-item">
-              <div class="skill-info">
-                <span class="skill-name">AWS Cloud Platform</span>
-                <span class="skill-val">85%</span>
-              </div>
-              <div class="skill-bar-wrap">
-                <div class="skill-bar-progress" data-width="85%"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-info">
-                <span class="skill-name">Terraform (IaC)</span>
-                <span class="skill-val">85%</span>
-              </div>
-              <div class="skill-bar-wrap">
-                <div class="skill-bar-progress" data-width="85%"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-info">
-                <span class="skill-name">Ansible Config Mgmt</span>
-                <span class="skill-val">80%</span>
-              </div>
-              <div class="skill-bar-wrap">
-                <div class="skill-bar-progress" data-width="80%"></div>
-              </div>
+
+      <div class="skills-evidence-grid">
+        <div class="evidence-card glass-card" tabindex="0">
+          <div class="evidence-card-header">
+            <i class="fa-brands fa-aws" style="color:#ff9900;font-size:1.5rem;"></i>
+            <h3>AWS</h3>
+            <span class="expand-icon"><i class="fa-solid fa-chevron-down"></i></span>
+          </div>
+          <div class="evidence-card-tags">
+            <span>VPC</span><span>EC2</span><span>IAM</span><span>S3</span><span>RDS</span>
+            <span>ALB</span><span>Route53</span><span>CloudWatch</span><span>ECR</span>
+          </div>
+          <div class="evidence-card-details">
+            <p>Provisioned scalable AWS infrastructure including VPC networking, Security Groups, EC2 nodes, and multi-AZ deployments for production workloads.</p>
+            <div class="evidence-card-proof">
+              <span class="status-label status-label--real">REAL PROJECT</span>
+              <span>Used in Cloaknote.online &amp; VPC Blueprint</span>
             </div>
           </div>
         </div>
-        
-        <!-- Category 2: Containers & Pipelines -->
-        <div class="skills-category glass-card">
-          <h3><i class="fa-solid fa-cubes"></i> Containers & CI/CD</h3>
-          <div class="skills-list">
-            <div class="skill-item">
-              <div class="skill-info">
-                <span class="skill-name">GitHub Actions CI/CD</span>
-                <span class="skill-val">90%</span>
-              </div>
-              <div class="skill-bar-wrap">
-                <div class="skill-bar-progress" data-width="90%"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-info">
-                <span class="skill-name">Docker & Kubernetes</span>
-                <span class="skill-val">80%</span>
-              </div>
-              <div class="skill-bar-wrap">
-                <div class="skill-bar-progress" data-width="80%"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-info">
-                <span class="skill-name">DevSecOps Security Scans</span>
-                <span class="skill-val">80%</span>
-              </div>
-              <div class="skill-bar-wrap">
-                <div class="skill-bar-progress" data-width="80%"></div>
-              </div>
+
+        <div class="evidence-card glass-card" tabindex="0">
+          <div class="evidence-card-header">
+            <i class="devicon-terraform-plain" style="color:#844fba;font-size:1.5rem;"></i>
+            <h3>Terraform</h3>
+            <span class="expand-icon"><i class="fa-solid fa-chevron-down"></i></span>
+          </div>
+          <div class="evidence-card-tags">
+            <span>Modules</span><span>Remote State</span><span>Variables</span>
+            <span>Outputs</span><span>IaC Automation</span>
+          </div>
+          <div class="evidence-card-details">
+            <p>Wrote modular Terraform configurations for VPC, subnets, security groups, and EC2 infrastructure on AWS. Automated infrastructure provisioning across environments.</p>
+            <div class="evidence-card-proof">
+              <span class="status-label status-label--real">REAL PROJECT</span>
+              <span>Used in VPC Blueprint project</span>
             </div>
           </div>
         </div>
-        
-        <!-- Category 3: System Admin & Scripting -->
-        <div class="skills-category glass-card">
-          <h3><i class="fa-solid fa-terminal"></i> Systems & Admin</h3>
-          <div class="skills-list">
-            <div class="skill-item">
-              <div class="skill-info">
-                <span class="skill-name">Linux System Admin</span>
-                <span class="skill-val">90%</span>
-              </div>
-              <div class="skill-bar-wrap">
-                <div class="skill-bar-progress" data-width="90%"></div>
-              </div>
+
+        <div class="evidence-card glass-card" tabindex="0">
+          <div class="evidence-card-header">
+            <i class="devicon-kubernetes-plain" style="color:#326ce5;font-size:1.5rem;"></i>
+            <h3>Kubernetes</h3>
+            <span class="expand-icon"><i class="fa-solid fa-chevron-down"></i></span>
+          </div>
+          <div class="evidence-card-tags">
+            <span>Deployments</span><span>Services</span><span>ConfigMaps</span>
+            <span>Secrets</span><span>Probes</span><span>Rolling Updates</span>
+          </div>
+          <div class="evidence-card-details">
+            <p>Managed container scheduling with self-healing configurations, rolling updates, horizontal scaling, and production-ready deployment strategies.</p>
+            <div class="evidence-card-proof">
+              <span class="status-label status-label--real">REAL PROJECT</span>
+              <span>Used in Cloaknote.online deployment</span>
             </div>
-            <div class="skill-item">
-              <div class="skill-info">
-                <span class="skill-name">Shell Scripting</span>
-                <span class="skill-val">85%</span>
-              </div>
-              <div class="skill-bar-wrap">
-                <div class="skill-bar-progress" data-width="85%"></div>
-              </div>
+          </div>
+        </div>
+
+        <div class="evidence-card glass-card" tabindex="0">
+          <div class="evidence-card-header">
+            <i class="devicon-docker-plain" style="color:#2496ed;font-size:1.5rem;"></i>
+            <h3>Docker</h3>
+            <span class="expand-icon"><i class="fa-solid fa-chevron-down"></i></span>
+          </div>
+          <div class="evidence-card-tags">
+            <span>Dockerfiles</span><span>Compose</span><span>Multi-stage</span>
+            <span>Image Optimization</span><span>Registry</span>
+          </div>
+          <div class="evidence-card-details">
+            <p>Containerized applications with optimized multi-stage builds, health checks, non-root user configurations, and efficient layer caching.</p>
+            <div class="evidence-card-proof">
+              <span class="status-label status-label--real">REAL PROJECT</span>
+              <span>Used across containerized deployments</span>
             </div>
-            <div class="skill-item">
-              <div class="skill-info">
-                <span class="skill-name">Jira & ServiceNow ITSM</span>
-                <span class="skill-val">85%</span>
-              </div>
-              <div class="skill-bar-wrap">
-                <div class="skill-bar-progress" data-width="85%"></div>
-              </div>
+          </div>
+        </div>
+
+        <div class="evidence-card glass-card" tabindex="0">
+          <div class="evidence-card-header">
+            <i class="devicon-githubactions-plain" style="color:#2088ff;font-size:1.5rem;"></i>
+            <h3>CI/CD</h3>
+            <span class="expand-icon"><i class="fa-solid fa-chevron-down"></i></span>
+          </div>
+          <div class="evidence-card-tags">
+            <span>GitHub Actions</span><span>Automated Build</span><span>Testing</span>
+            <span>Security Scanning</span><span>Deployment</span>
+          </div>
+          <div class="evidence-card-details">
+            <p>Built automated delivery pipelines with build, test, security scan, and deployment stages using GitHub Actions workflows.</p>
+            <div class="evidence-card-proof">
+              <span class="status-label status-label--real">REAL PROJECT</span>
+              <span>Used across multiple projects</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="evidence-card glass-card" tabindex="0">
+          <div class="evidence-card-header">
+            <i class="fa-solid fa-shield-halved" style="color:#10b981;font-size:1.5rem;"></i>
+            <h3>DevSecOps</h3>
+            <span class="expand-icon"><i class="fa-solid fa-chevron-down"></i></span>
+          </div>
+          <div class="evidence-card-tags">
+            <span>Trivy</span><span>Bandit</span><span>Gitleaks</span>
+            <span>SAST</span><span>Container Scanning</span>
+          </div>
+          <div class="evidence-card-details">
+            <p>Integrated shift-left security with SAST (Bandit), secret detection (Gitleaks), and container vulnerability scanning (Trivy) in CI pipelines.</p>
+            <div class="evidence-card-proof">
+              <span class="status-label status-label--real">REAL PROJECT</span>
+              <span>Used in production pipelines</span>
             </div>
           </div>
         </div>
@@ -515,6 +542,7 @@
           <div class="project-header">
             <div class="project-icon"><i class="fa-solid fa-shield-halved"></i></div>
             <div class="project-links">
+              <span class="status-label status-label--real">REAL PROJECT</span>
               <a href="#" aria-label="GitHub Repository"><i class="fa-brands fa-github"></i></a>
               <a href="https://cloaknote.online/" aria-label="Live Demo website"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
@@ -540,6 +568,7 @@
           <div class="project-header">
             <div class="project-icon"><i class="fa-solid fa-network-wired"></i></div>
             <div class="project-links">
+              <span class="status-label status-label--real">REAL PROJECT</span>
               <a href="https://github.com/Decoder4399/terraform-custom-vpc-infra" aria-label="GitHub Repository"><i class="fa-brands fa-github"></i></a>
             </div>
           </div>

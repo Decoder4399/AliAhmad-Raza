@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Architecture Lab | Ali Ahmad Raza</title>
+  <meta name="description" content="Interactive AWS Architecture Lab - Explore production architectures, run failure simulations, analyze risks, and test disaster recovery strategies.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="architecture.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+</head>
+<body>
+  <div class="bg-radial-lights">
+    <div class="light-orb orb-1"></div>
+    <div class="light-orb orb-2"></div>
+    <div class="light-orb orb-3"></div>
+  </div>
+
+  <header id="header">
+    <div class="container">
+      <a href="index.html" class="logo" id="logo-link">
+        <svg viewBox="0 0 100 100">
+          <path class="logo-path" d="M 50,50 C 35,30 15,30 15,50 C 15,70 35,70 50,50 C 65,30 85,30 85,50 C 85,70 65,70 50,50 Z" />
+        </svg>
+        <span>Ali Ahmad Raza</span>
+      </a>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="nav-menu">
+        <ul>
+          <li><a href="index.html#hero">Home</a></li>
+          <li><a href="architecture.html" class="active">Architecture</a></li>
+          <li><a href="index.html#experience">Experience</a></li>
+          <li><a href="index.html#projects">Projects</a></li>
+          <li><a href="dr-lab.html">DR Lab</a></li>
+          <li><a href="devsmith.html">DevSmith</a></li>
+          <li><a href="index.html#terminal">Terminal</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+          <li><a href="https://github.com/Decoder4399" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding:0.45rem 1rem;font-size:0.82rem;"><i class="fa-brands fa-github"></i> GitHub</a></li>
+          <li><a href="Ali-Devops-23june.pdf" class="btn btn-primary" style="padding:0.45rem 1rem;font-size:0.82rem;" download><i class="fa-solid fa-download"></i> Resume</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="arch-hero">
+      <div class="container">
+        <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a>
+        <div class="status-badge">
+          <span class="status-pulse"></span>
+          <span>ARCHITECTURE LAB v1.0</span>
+        </div>
+        <h1>Architecture <span>Lab</span></h1>
+        <p class="arch-hero-desc">Explore production-grade AWS architectures, run failure simulations, analyze risks, and discover how architectural decisions cascade through systems.</p>
+        <div class="sim-label"><span class="status-label status-label--simulation">LOCAL SIMULATION</span> No AWS connection required</div>
+      </div>
+    </section>
+
+    <!-- Section 1: Interactive Architecture Diagrams -->
+    <section id="arch-diagrams">
+      <div class="container">
+        <div class="section-header">
+          <h2>Architecture Diagrams</h2>
+          <p>Click on any component to explore why it was chosen, when to use it, and what happens when it fails.</p>
+        </div>
+
+        <div class="arch-tabs">
+          <button class="arch-tab active" data-arch="web-app">
+            <i class="fa-solid fa-globe"></i> Production Web App
+          </button>
+          <button class="arch-tab" data-arch="container-platform">
+            <i class="devicon-kubernetes-plain"></i> Container Platform
+          </button>
+          <button class="arch-tab" data-arch="serverless">
+            <i class="fa-solid fa-bolt"></i> Serverless API
+          </button>
+          <button class="arch-tab" data-arch="multi-region">
+            <i class="fa-solid fa-earth-americas"></i> Multi-Region DR
+          </button>
+        </div>
+
+        <div class="arch-workspace">
+          <div class="arch-diagram-container" id="arch-diagram">
+            <!-- SVG diagram rendered by JS -->
+          </div>
+          <div class="arch-detail-panel" id="arch-detail">
+            <div class="arch-detail-placeholder">
+              <i class="fa-solid fa-hand-pointer"></i>
+              <h3>Select a Component</h3>
+              <p>Click on any service node in the diagram to see detailed information about its purpose, alternatives, failure behavior, and cost.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: What-If Simulator -->
+    <section id="what-if" style="background:rgba(5,6,11,0.5);">
+      <div class="container">
+        <div class="section-header">
+          <h2>What-If Simulator</h2>
+          <p>Select a failure scenario to see how it propagates through the architecture and what the recovery path looks like.</p>
+        </div>
+
+        <div class="scenario-grid" id="scenario-grid">
+          <!-- Rendered by JS -->
+        </div>
+
+        <div class="sim-result-panel" id="sim-result" style="display:none;">
+          <div class="sim-result-header">
+            <h3 id="sim-result-title"></h3>
+            <span class="impact-badge" id="sim-result-impact"></span>
+          </div>
+          <div class="sim-result-body">
+            <div class="sim-propagation" id="sim-propagation"></div>
+            <div class="sim-recovery">
+              <h4>Recovery Path</h4>
+              <p id="sim-recovery-text"></p>
+            </div>
+            <div class="sim-mitigation">
+              <h4>Architectural Mitigation</h4>
+              <p id="sim-mitigation-text"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Architecture Butterfly Effect -->
+    <section id="butterfly">
+      <div class="container">
+        <div class="section-header">
+          <h2>Architecture Butterfly Effect</h2>
+          <p>What else changes when you change one architectural decision? Explore cascading impacts.</p>
+        </div>
+
+        <div class="butterfly-selector">
+          <button class="butterfly-btn active" data-effect="remove-nat">Remove NAT Gateway</button>
+          <button class="butterfly-btn" data-effect="ecs-to-lambda">ECS to Lambda</button>
+          <button class="butterfly-btn" data-effect="add-cdn">Add CloudFront CDN</button>
+          <button class="butterfly-btn" data-effect="single-to-multi-az">Single-AZ to Multi-AZ</button>
+        </div>
+
+        <div class="butterfly-diagram" id="butterfly-diagram">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Architecture Crash Test -->
+    <section id="crash-test" style="background:rgba(5,6,11,0.5);">
+      <div class="container">
+        <div class="section-header">
+          <h2>Architecture Crash Test</h2>
+          <p>Run simulated failure scenarios against the architecture. Watch how failures propagate and observe recovery.</p>
+        </div>
+
+        <div class="crash-test-controls">
+          <select id="crash-scenario-select" class="crash-select">
+            <option value="">Select a failure scenario...</option>
+            <option value="az-failure">AZ Failure</option>
+            <option value="db-failure">Database Failure</option>
+            <option value="dns-failure">DNS Failure</option>
+            <option value="region-failure">Region Failure</option>
+            <option value="cert-expiry">Certificate Expiration</option>
+            <option value="quota-exhaustion">Quota Exhaustion</option>
+            <option value="network-failure">Network Failure</option>
+            <option value="cache-failure">Cache Failure</option>
+          </select>
+          <button class="btn btn-primary" id="run-crash-test"><i class="fa-solid fa-play"></i> Run Crash Test</button>
+        </div>
+
+        <div class="crash-test-viz" id="crash-viz" style="display:none;">
+          <div class="crash-timeline" id="crash-timeline"></div>
+          <div class="crash-summary" id="crash-summary"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Architecture Risk Analyzer -->
+    <section id="risk-analyzer">
+      <div class="container">
+        <div class="section-header">
+          <h2>Architecture Risk Analyzer</h2>
+          <p>An automated analysis of the example architecture's reliability, security, cost efficiency, and operational maturity.</p>
+          <div style="margin-top:0.5rem;"><span class="status-label status-label--demo">DEMO SCORES</span> Based on example architecture</div>
+        </div>
+
+        <div class="risk-dashboard">
+          <div class="risk-scores" id="risk-scores">
+            <!-- Rendered by JS -->
+          </div>
+          <div class="risk-findings" id="risk-findings">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Local Cost Estimator -->
+    <section id="cost-estimator" style="background:rgba(5,6,11,0.5);">
+      <div class="container">
+        <div class="section-header">
+          <h2>Cost Estimator</h2>
+          <p>Illustrative monthly cost estimates for AWS resources. Configure your architecture and see approximate pricing.</p>
+          <div style="margin-top:0.5rem;"><span class="status-label status-label--demo">ILLUSTRATIVE ESTIMATE</span> Actual pricing varies by region, usage, and configuration</div>
+        </div>
+
+        <div class="cost-workspace">
+          <div class="cost-config" id="cost-config">
+            <!-- Rendered by JS -->
+          </div>
+          <div class="cost-summary" id="cost-summary">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 7: Architecture Review -->
+    <section id="arch-review">
+      <div class="container">
+        <div class="section-header">
+          <h2>Architecture Review</h2>
+          <p>Key questions an AWS Solutions Architect should ask when reviewing this architecture.</p>
+        </div>
+
+        <div class="review-categories" id="review-categories">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Ali Ahmad Raza. All rights reserved.</p>
+      <div class="footer-tag">
+        <span>Designed &amp; engineered for performance</span>
+        <span style="margin:0 0.5rem;">|</span>
+        <span>Built with <i class="fa-solid fa-heart"></i> and DevOps principles</span>
+        <span style="margin:0 0.5rem;">|</span>
+        <a href="https://github.com/Decoder4399" target="_blank" rel="noopener noreferrer" style="color:var(--color-primary);"><i class="fa-brands fa-github"></i> Decoder4399</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="architecture.js"></script>
+  <script>
+    // Header scroll
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 30));
+    // Mobile menu
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('active');
+      navMenu.classList.toggle('open');
+    });
+    // Close menu on link click
+    navMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navMenu.classList.remove('open');
+      menuToggle.classList.remove('active');
+    }));
+  </script>
+</body>
+</html>

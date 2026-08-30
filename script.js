@@ -116,6 +116,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // --- 4. Skill Progress Bar Trigger on Scroll ---
+  // Evidence card expand/collapse
+  document.querySelectorAll('.evidence-card').forEach(card => {
+    card.addEventListener('click', () => card.classList.toggle('expanded'));
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.classList.toggle('expanded'); }
+    });
+  });
   const skillsSection = document.getElementById('skills');
   const skillBars = document.querySelectorAll('.skill-bar-progress');
 
@@ -279,6 +286,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   let currentDir = '~';
+  let commandHistory = [];
+  let historyIndex = -1;
 
   const files = {
     '~': {
@@ -322,6 +331,12 @@ An enterprise-ready AWS VPC infrastructure baseline module template written in T
       const command = inputParts[0].toLowerCase();
       const args = inputParts.slice(1);
 
+      // Add to history
+      if (fullInput) {
+        commandHistory.push(fullInput);
+        historyIndex = -1;
+      }
+
       // Print input line in terminal output
       const inputLine = document.createElement('div');
       inputLine.className = 'terminal-line';
@@ -344,6 +359,13 @@ Available commands:
   <span class="success">whoami</span>         - Display current logged-in user
   <span class="success">date</span>           - Display system date and time
   <span class="success">echo [text]</span>    - Echo text to screen
+  <span class="success">projects</span>       - List available projects
+  <span class="success">skills</span>         - Show technology stack
+  <span class="success">architecture</span>   - View available architectures
+  <span class="success">dr</span>             - View DR scenarios
+  <span class="success">experience</span>     - Navigate to experience section
+  <span class="success">contact</span>        - Navigate to contact section
+  <span class="success">devsmith</span>       - Open DevSmith toolkit
   <span class="success">clear</span>          - Clear terminal screen
             `;
             break;
@@ -452,6 +474,68 @@ Available commands:
             }
             break;
 
+          case 'projects':
+            response = `<span class="info">Available Projects:</span>
+
+  1. <span class="success">Cloaknote.online</span> — Secure Note Sharing Platform
+     Kubernetes | Docker | DevSecOps | GitHub Actions
+  2. <span class="success">Terraform VPC Blueprint</span> — AWS Infrastructure Module
+     Terraform | AWS VPC | Security Groups
+
+  Type <span class="info">cat cloaknote.txt</span> or <span class="info">cat terraform-vpc.txt</span> for details.`;
+            break;
+
+          case 'skills':
+            response = `<span class="info">Technology Stack:</span>
+
+  <span class="success">Cloud:</span>       AWS (VPC, EC2, S3, RDS, ALB, Route53, ECR, CloudWatch)
+  <span class="success">IaC:</span>          Terraform (Modules, Remote State, Variables)
+  <span class="success">Containers:</span>   Docker (Multi-stage, Compose), Kubernetes (Deployments, Services, Helm)
+  <span class="success">CI/CD:</span>        GitHub Actions, Automated Build/Test/Deploy
+  <span class="success">Security:</span>     Trivy, Bandit, Gitleaks, DevSecOps
+  <span class="success">Systems:</span>      Linux Administration, Shell Scripting, Ansible
+  <span class="success">ITSM:</span>         Jira, ServiceNow`;
+            break;
+
+          case 'architecture':
+            response = `<span class="info">Architecture Lab — Available Architectures:</span>
+
+  <span class="success">1. Production Web App</span>     Route53 → CloudFront → ALB → ECS → RDS
+  <span class="success">2. Container Platform</span>     Route53 → ALB → EKS → EC2 Nodes → RDS
+  <span class="success">3. Serverless API</span>         Route53 → API Gateway → Lambda → DynamoDB
+  <span class="success">4. Multi-Region DR</span>        Route53 → CloudFront → ECS (Primary + DR)
+
+  Run <span class="info">what-if</span> or <span class="info">crash-test</span> to simulate failures.`;
+            break;
+
+          case 'dr':
+            response = `<span class="info">DR Lab — Failure Scenarios:</span>
+
+  <span class="warning">1. Region Failure</span>         RTO: ~23min | RPO: ~4min
+  <span class="warning">2. AZ Failure</span>             RTO: ~8min  | RPO: ~1min
+  <span class="warning">3. Database Failure</span>        RTO: ~5min  | RPO: ~2min
+  <span class="warning">4. DNS Failure</span>             RTO: ~15min | RPO: ~0min
+  <span class="warning">5. Kubernetes Failure</span>      RTO: ~12min | RPO: ~0min
+  <span class="warning">6. Data Corruption</span>         RTO: ~20min | RPO: ~5min
+
+  Open <span class="success">dr-lab.html</span> for the full interactive DR Lab.`;
+            break;
+
+          case 'experience':
+            response = 'Navigating to experience section...';
+            document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' });
+            break;
+
+          case 'contact':
+            response = 'Navigating to contact section...';
+            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+            break;
+
+          case 'devsmith':
+            response = 'Opening DevSmith toolkit...';
+            setTimeout(() => { window.location.href = 'devsmith.html'; }, 500);
+            break;
+
           default:
             response = `bash: command not found: ${command}. Type 'help' for options.`;
         }
@@ -468,6 +552,24 @@ Available commands:
       terminalInput.value = '';
       terminalWindow.scrollTop = terminalWindow.scrollHeight;
     }
+
+    // Command history navigation
+    if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      if (commandHistory.length > 0 && historyIndex < commandHistory.length - 1) {
+        historyIndex++;
+        terminalInput.value = commandHistory[commandHistory.length - 1 - historyIndex];
+      }
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      if (historyIndex > 0) {
+        historyIndex--;
+        terminalInput.value = commandHistory[commandHistory.length - 1 - historyIndex];
+      } else {
+        historyIndex = -1;
+        terminalInput.value = '';
+      }
+    }
   });
 
 
@@ -482,7 +584,7 @@ Available commands:
   }, { threshold: 0.08 });
 
   const revealTargets = document.querySelectorAll(
-    '.stat-item, .skills-category, .timeline-item, .project-card, .terminal-widget, .contact-card, .section-header, .pipeline-flow'
+    '.stat-item, .skills-category, .timeline-item, .project-card, .terminal-widget, .contact-card, .section-header, .pipeline-flow, .evidence-card'
   );
 
   revealTargets.forEach(el => {

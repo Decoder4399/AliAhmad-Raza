@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DR Lab | Ali Ahmad Raza</title>
+  <meta name="description" content="Interactive Disaster Recovery Lab - Run failure simulations, calculate RTO/RPO, and visualize recovery strategies.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="architecture.css">
+  <link rel="stylesheet" href="dr-lab.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+</head>
+<body>
+  <div class="bg-radial-lights">
+    <div class="light-orb orb-1"></div>
+    <div class="light-orb orb-2"></div>
+    <div class="light-orb orb-3"></div>
+  </div>
+
+  <header id="header">
+    <div class="container">
+      <a href="index.html" class="logo" id="logo-link">
+        <svg viewBox="0 0 100 100">
+          <path class="logo-path" d="M 50,50 C 35,30 15,30 15,50 C 15,70 35,70 50,50 C 65,30 85,30 85,50 C 85,70 65,70 50,50 Z" />
+        </svg>
+        <span>Ali Ahmad Raza</span>
+      </a>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="nav-menu">
+        <ul>
+          <li><a href="index.html#hero">Home</a></li>
+          <li><a href="architecture.html">Architecture</a></li>
+          <li><a href="index.html#experience">Experience</a></li>
+          <li><a href="index.html#projects">Projects</a></li>
+          <li><a href="dr-lab.html" class="active">DR Lab</a></li>
+          <li><a href="devsmith.html">DevSmith</a></li>
+          <li><a href="index.html#terminal">Terminal</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+          <li><a href="https://github.com/Decoder4399" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding:0.45rem 1rem;font-size:0.82rem;"><i class="fa-brands fa-github"></i> GitHub</a></li>
+          <li><a href="Ali-Devops-23june.pdf" class="btn btn-primary" style="padding:0.45rem 1rem;font-size:0.82rem;" download><i class="fa-solid fa-download"></i> Resume</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="arch-hero">
+      <div class="container">
+        <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a>
+        <div class="status-badge">
+          <span class="status-pulse"></span>
+          <span>DR LAB v1.0</span>
+        </div>
+        <h1>Disaster Recovery <span>Lab</span></h1>
+        <p class="arch-hero-desc">Simulate failure scenarios, calculate RTO/RPO compliance, and visualize recovery sequences for production AWS architectures.</p>
+        <div class="sim-label"><span class="status-label status-label--simulation">LOCAL SIMULATION</span> No AWS connection required</div>
+      </div>
+    </section>
+
+    <!-- DR Readiness Dashboard -->
+    <section id="dr-dashboard">
+      <div class="container">
+        <div class="section-header">
+          <h2>DR Readiness Dashboard</h2>
+          <p>Current disaster recovery posture for the example production architecture.</p>
+        </div>
+
+        <div class="dr-grid">
+          <div class="dr-readiness-card glass-card">
+            <div class="dr-readiness-circle">
+              <svg viewBox="0 0 120 120">
+                <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="8"/>
+                <circle cx="60" cy="60" r="52" fill="none" stroke="url(#drGrad)" stroke-width="8" stroke-linecap="round"
+                  stroke-dasharray="326.73" stroke-dashoffset="326.73" id="dr-circle"/>
+                <defs><linearGradient id="drGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#10b981"/><stop offset="100%" stop-color="#38bdf8"/>
+                </linearGradient></defs>
+              </svg>
+              <div class="dr-readiness-value" id="dr-score">0</div>
+            </div>
+            <h3>DR Readiness</h3>
+            <p class="dr-readiness-label">Based on example architecture</p>
+          </div>
+
+          <div class="dr-metrics-grid">
+            <div class="dr-metric glass-card">
+              <div class="dr-metric-label">Target RTO</div>
+              <div class="dr-metric-value">30 min</div>
+            </div>
+            <div class="dr-metric glass-card">
+              <div class="dr-metric-label">Target RPO</div>
+              <div class="dr-metric-value">15 min</div>
+            </div>
+            <div class="dr-metric glass-card">
+              <div class="dr-metric-label">Simulated RTO</div>
+              <div class="dr-metric-value" style="color:var(--color-success);">23 min</div>
+            </div>
+            <div class="dr-metric glass-card">
+              <div class="dr-metric-label">Simulated RPO</div>
+              <div class="dr-metric-value" style="color:var(--color-success);">4 min</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Component Status -->
+    <section id="dr-components" style="background:rgba(5,6,11,0.5);">
+      <div class="container">
+        <div class="section-header">
+          <h2>Component Status</h2>
+          <p>DR readiness status for each infrastructure component.</p>
+        </div>
+
+        <div class="dr-components-grid" id="dr-components-grid">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Failure Scenarios -->
+    <section id="dr-scenarios">
+      <div class="container">
+        <div class="section-header">
+          <h2>Failure Scenarios</h2>
+          <p>Select a disaster scenario to simulate and observe the recovery sequence.</p>
+        </div>
+
+        <div class="dr-scenario-grid" id="dr-scenario-grid">
+          <!-- Rendered by JS -->
+        </div>
+
+        <div class="dr-scenario-result" id="dr-scenario-result" style="display:none;">
+          <div class="dr-result-header">
+            <h3 id="dr-result-title"></h3>
+            <div class="dr-result-badges">
+              <span class="impact-badge" id="dr-result-impact"></span>
+              <span class="status-label status-label--simulation">SIMULATION</span>
+            </div>
+          </div>
+          <div class="dr-result-body">
+            <div class="dr-affected-components" id="dr-affected"></div>
+            <div class="dr-recovery-sequence" id="dr-recovery"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RTO/RPO Calculator -->
+    <section id="dr-calculator" style="background:rgba(5,6,11,0.5);">
+      <div class="container">
+        <div class="section-header">
+          <h2>RTO / RPO Calculator</h2>
+          <p>Input your target recovery parameters and see if the architecture meets your compliance requirements.</p>
+          <div style="margin-top:0.5rem;"><span class="status-label status-label--demo">ILLUSTRATIVE</span> Architectural estimate, not a measurement</div>
+        </div>
+
+        <div class="calc-workspace">
+          <div class="calc-config glass-card">
+            <h3>Configuration</h3>
+            <div class="calc-field">
+              <label>Target RTO (minutes)</label>
+              <input type="number" id="calc-rto" value="30" min="1" max="1440">
+            </div>
+            <div class="calc-field">
+              <label>Target RPO (minutes)</label>
+              <input type="number" id="calc-rpo" value="15" min="1" max="1440">
+            </div>
+            <div class="calc-field">
+              <label>Backup Frequency (minutes)</label>
+              <input type="number" id="calc-backup" value="5" min="1" max="1440">
+            </div>
+            <div class="calc-field">
+              <label>Replication Type</label>
+              <select id="calc-replication">
+                <option value="none">None (single region)</option>
+                <option value="cross-az">Cross-AZ</option>
+                <option value="cross-region" selected>Cross-Region</option>
+              </select>
+            </div>
+            <div class="calc-field">
+              <label>Recovery Strategy</label>
+              <select id="calc-strategy">
+                <option value="backup-restore">Backup & Restore</option>
+                <option value="pilot-light">Pilot Light</option>
+                <option value="warm-standby" selected>Warm Standby</option>
+                <option value="multi-site">Multi-Site Active/Active</option>
+              </select>
+            </div>
+            <button class="btn btn-primary" id="calc-run" style="width:100%;justify-content:center;margin-top:0.5rem;">
+              <i class="fa-solid fa-calculator"></i> Calculate
+            </button>
+          </div>
+
+          <div class="calc-results glass-card" id="calc-results">
+            <h3>Results</h3>
+            <div class="calc-result-item">
+              <span class="calc-result-label">Simulated RTO</span>
+              <span class="calc-result-value" id="calc-sim-rto">—</span>
+            </div>
+            <div class="calc-result-item">
+              <span class="calc-result-label">Simulated RPO</span>
+              <span class="calc-result-value" id="calc-sim-rpo">—</span>
+            </div>
+            <div class="calc-result-item">
+              <span class="calc-result-label">RTO Compliance</span>
+              <span class="calc-result-value" id="calc-rto-status">—</span>
+            </div>
+            <div class="calc-result-item">
+              <span class="calc-result-label">RPO Compliance</span>
+              <span class="calc-result-value" id="calc-rpo-status">—</span>
+            </div>
+            <div class="calc-explanation" id="calc-explanation">
+              <p>Configure parameters and click Calculate to see results.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Ali Ahmad Raza. All rights reserved.</p>
+      <div class="footer-tag">
+        <span>Designed &amp; engineered for performance</span>
+        <span style="margin:0 0.5rem;">|</span>
+        <span>Built with <i class="fa-solid fa-heart"></i> and DevOps principles</span>
+        <span style="margin:0 0.5rem;">|</span>
+        <a href="https://github.com/Decoder4399" target="_blank" rel="noopener noreferrer" style="color:var(--color-primary);"><i class="fa-brands fa-github"></i> Decoder4399</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="dr-lab.js"></script>
+  <script>
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 30));
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    menuToggle.addEventListener('click', () => { menuToggle.classList.toggle('active'); navMenu.classList.toggle('open'); });
+    navMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { navMenu.classList.remove('open'); menuToggle.classList.remove('active'); }));
+  </script>
+</body>
+</html>
