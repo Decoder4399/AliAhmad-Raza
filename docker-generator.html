@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Terraform Generator | DevSmith | Ali Ahmad Raza</title>
-  <meta name="description" content="Generate production-ready Terraform configurations for AWS, GCP, and Azure infrastructure.">
+  <title>Docker Generator | DevSmith | Ali Ahmad Raza</title>
+  <meta name="description" content="Generate production-ready Dockerfiles and Docker Compose configurations for any tech stack.">
   
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="terraform-generator.css">
+  <link rel="stylesheet" href="docker-generator.css">
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
@@ -55,57 +55,45 @@
     </div>
   </header>
 
-  <main id="generator-main">
-    <section class="generator-hero">
+  <main id="docker-main">
+    <section class="docker-hero">
       <div class="container">
-        <div class="generator-hero-content">
+        <div class="docker-hero-content">
           <a href="devsmith.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to DevSmith</a>
           <div class="status-badge">
             <span class="status-pulse"></span>
-            <span>TERRAFORM GENERATOR v2.0</span>
+            <span>DOCKER GENERATOR v1.0</span>
           </div>
-          <h1>Terraform<br><span id="hero-provider-name">AWS</span> Generator</h1>
-          <p class="generator-description" id="hero-provider-desc">
-            Generate production-ready Amazon Web Services infrastructure code in seconds. Select your resources, configure the details, and download a complete Terraform project.
+          <h1>Docker<br><span>Generator</span></h1>
+          <p class="docker-description">
+            Generate production-ready Dockerfiles and Docker Compose configurations for any tech stack. Multi-stage builds, health checks, and best practices included.
           </p>
-          <div class="generator-stats" id="hero-stats">
-            <div class="stat"><span>22</span> Resources</div>
+          <div class="docker-stats">
+            <div class="stat"><span>26</span> Tech Stacks</div>
+            <div class="stat"><span>6</span> Categories</div>
             <div class="stat"><span>2</span> Output Modes</div>
-            <div class="stat"><span>1</span> Click Deploy</div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="generator-workspace">
+    <section class="docker-workspace">
       <div class="container">
-        <div class="generator-layout">
+        <div class="docker-layout">
           
-          <aside class="resource-panel glass-card" id="resource-panel">
-            <div class="provider-selector">
-              <button class="provider-tab active" data-provider="aws">
-                <i class="devicon-amazonwebservices-plain"></i> AWS
-              </button>
-              <button class="provider-tab" data-provider="gcp">
-                <i class="devicon-googlecloud-plain"></i> GCP
-              </button>
-              <button class="provider-tab" data-provider="azure">
-                <i class="devicon-azure-plain"></i> Azure
-              </button>
-            </div>
-
+          <aside class="tech-panel glass-card" id="tech-panel">
             <div class="panel-header">
-              <h2><i class="devicon-terraform-plain"></i> Resource Selection</h2>
+              <h2><i class="devicon-docker-plain"></i> Tech Stack Selection</h2>
               <button class="btn btn-secondary btn-sm" id="select-all-btn">Select All</button>
             </div>
             
-            <div class="resource-groups" id="resource-groups">
+            <div class="tech-groups" id="tech-groups">
               <!-- Dynamically rendered from JS -->
             </div>
 
             <div class="panel-footer">
               <div class="selection-summary">
-                <span id="selected-count">0</span> of <span id="total-count">22</span> resources selected
+                <span id="selected-count">0</span> of <span id="total-count">26</span> stacks selected
               </div>
             </div>
           </aside>
@@ -119,11 +107,11 @@
               
               <div class="config-sections" id="config-sections">
                 <div class="config-placeholder" id="config-placeholder">
-                  <div class="placeholder-icon"><i class="devicon-terraform-plain"></i></div>
-                  <h3>Select Resources to Configure</h3>
-                  <p>Choose resources from the left panel to reveal configuration options for each category.</p>
+                  <div class="placeholder-icon"><i class="devicon-docker-plain"></i></div>
+                  <h3>Select Tech Stacks to Configure</h3>
+                  <p>Choose tech stacks from the left panel to reveal configuration options for each category.</p>
                   <div class="placeholder-hint">
-                    <kbd>Tip</kbd> Use "Select All" for a complete infrastructure stack
+                    <kbd>Tip</kbd> Select multiple stacks to generate a full Docker Compose setup
                   </div>
                 </div>
               </div>
@@ -132,22 +120,22 @@
                 <h3><i class="fa-solid fa-file-code"></i> Output Options</h3>
                 <div class="radio-group">
                   <label class="radio-option">
-                    <input type="radio" name="output-mode" value="single" checked>
+                    <input type="radio" name="output-mode" value="compose" checked>
                     <div class="radio-content">
-                      <i class="fa-solid fa-file-lines"></i>
+                      <i class="fa-solid fa-layer-group"></i>
                       <div>
-                        <strong>Single File</strong>
-                        <span>All resources in main.tf + variables.tf + outputs.tf + provider.tf + backend.tf</span>
+                        <strong>Docker Compose</strong>
+                        <span>Single docker-compose.yml with all selected services + individual Dockerfiles where needed</span>
                       </div>
                     </div>
                   </label>
                   <label class="radio-option">
-                    <input type="radio" name="output-mode" value="modular">
+                    <input type="radio" name="output-mode" value="individual">
                     <div class="radio-content">
-                      <i class="fa-solid fa-folder-tree"></i>
+                      <i class="fa-solid fa-file-lines"></i>
                       <div>
-                        <strong>Modular Structure</strong>
-                        <span>Separate modules per group (vpc, compute, storage, database, kubernetes, iam) + root module</span>
+                        <strong>Individual Files</strong>
+                        <span>Separate Dockerfile per stack + minimal docker-compose.yml</span>
                       </div>
                     </div>
                   </label>
@@ -157,7 +145,7 @@
               <div class="generate-actions" id="generate-actions" style="display: none;">
                 <button class="btn btn-primary btn-lg" id="generate-btn">
                   <i class="fa-solid fa-magic"></i>
-                  <span>Generate Terraform</span>
+                  <span>Generate Docker Files</span>
                 </button>
                 <button class="btn btn-secondary" id="preview-btn">
                   <i class="fa-solid fa-eye"></i>
@@ -175,14 +163,14 @@
   <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <div class="modal" id="modal">
       <div class="modal-header">
-        <h2 id="modal-title"><i class="devicon-terraform-plain"></i> Generated Terraform Code</h2>
+        <h2 id="modal-title"><i class="devicon-docker-plain"></i> Generated Docker Files</h2>
         <button class="modal-close" id="modal-close" aria-label="Close modal"><i class="fa-solid fa-xmark"></i></button>
       </div>
       <div class="modal-tabs" id="modal-tabs" role="tablist"></div>
       <div class="modal-content" id="modal-content">
         <div class="modal-empty" id="modal-empty">
-          <i class="devicon-terraform-plain"></i>
-          <p>Generate Terraform code to preview files here</p>
+          <i class="devicon-docker-plain"></i>
+          <p>Generate Docker files to preview here</p>
         </div>
         <div class="modal-tab-panels" id="modal-tab-panels" style="display: none;"></div>
       </div>
@@ -190,7 +178,7 @@
         <div class="modal-stats" id="modal-stats"></div>
         <div class="modal-actions">
           <button class="btn btn-secondary" id="copy-all-btn"><i class="fa-solid fa-copy"></i> Copy All</button>
-          <button class="btn btn-primary" id="download-zip-btn"><i class="fa-solid fa-download"></i> Download .zip <span id="download-filename" style="opacity:0.6;font-size:0.75rem;margin-left:0.3rem;">terraform-aws-infrastructure.zip</span></button>
+          <button class="btn btn-primary" id="download-zip-btn"><i class="fa-solid fa-download"></i> Download .zip</button>
         </div>
       </div>
     </div>
@@ -209,6 +197,6 @@
     </div>
   </footer>
 
-  <script src="terraform-generator.js"></script>
+  <script src="docker-generator.js"></script>
 </body>
 </html>

@@ -1,0 +1,338 @@
+/* =============================================
+   DEVSITH PAGE STYLES
+   ============================================= */
+
+.devsmith-hero {
+  padding: clamp(6rem, 12vw, 10rem) 0 clamp(3rem, 6vw, 5rem);
+  text-align: center;
+}
+
+.devsmith-hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  transition: color 0.2s ease;
+}
+.back-link:hover { color: var(--color-primary); }
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(56,189,248,0.08);
+  border: 1px solid rgba(56,189,248,0.18);
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-primary);
+  letter-spacing: 1px;
+  margin-bottom: 1.5rem;
+}
+
+.status-pulse {
+  width: 8px;
+  height: 8px;
+  background: var(--color-success);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(16,185,129,0.5); }
+  50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(16,185,129,0); }
+}
+
+.devsmith-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  letter-spacing: -2px;
+  background: linear-gradient(135deg, var(--text-primary) 30%, var(--color-primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.devsmith-hero h1 span {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.devsmith-description {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: var(--text-secondary);
+  max-width: 650px;
+  margin: 0 auto 2rem;
+  line-height: 1.7;
+}
+
+.devsmith-stats {
+  display: flex;
+  justify-content: center;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  flex-wrap: wrap;
+}
+
+.devsmith-stats .stat {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.devsmith-stats .stat span {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1.2;
+}
+
+/* =============================================
+   TOOL CARDS
+   ============================================= */
+.devsmith-tools {
+  padding-bottom: clamp(3rem, 6vw, 6rem);
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.tool-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+  text-decoration: none;
+  transition: transform 0.4s var(--ease-out), border-color 0.3s var(--ease-std), box-shadow 0.3s var(--ease-std);
+}
+
+.tool-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  border-color: rgba(56,189,248,0.4);
+  box-shadow: 0 20px 50px -10px rgba(0,0,0,0.6), 0 0 30px rgba(56,189,248,0.1);
+}
+
+.tool-card-glow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.06;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.tool-card:hover .tool-card-glow { opacity: 0.12; }
+.terraform-glow { background: var(--color-primary); }
+.docker-glow { background: #2496ed; }
+
+.tool-card-icon {
+  padding: 2.5rem 2.5rem 0;
+  font-size: 3.5rem;
+  transition: transform 0.4s var(--ease-out);
+}
+
+.tool-card:hover .tool-card-icon { transform: scale(1.1); }
+
+.tool-card-icon .devicon-terraform-plain { color: #7b42bc; }
+.tool-card-icon .devicon-docker-plain { color: #2496ed; }
+
+.tool-card-content {
+  padding: 1.5rem 2.5rem;
+  flex: 1;
+}
+
+.tool-card-content h3 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: var(--text-primary);
+}
+
+.tool-card-content p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+
+.tool-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tool-tags .tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border-glass);
+  padding: 0.3rem 0.7rem;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+}
+
+.tool-tags .tag i { font-size: 0.85rem; }
+
+.tool-card-footer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 2.5rem;
+  border-top: 1px solid var(--border-glass);
+  background: rgba(0,0,0,0.15);
+}
+
+.tool-stat {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.tool-arrow {
+  margin-left: auto;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(56,189,248,0.1);
+  color: var(--color-primary);
+  font-size: 0.85rem;
+  transition: all 0.3s var(--ease-std);
+}
+
+.tool-card:hover .tool-arrow {
+  background: var(--color-primary);
+  color: var(--bg-darker);
+  transform: translateX(4px);
+}
+
+/* =============================================
+   FEATURES GRID
+   ============================================= */
+.devsmith-features {
+  padding-bottom: clamp(4rem, 8vw, 8rem);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.feature-card {
+  padding: 2rem;
+  text-align: center;
+  transition: transform 0.3s var(--ease-out), border-color 0.3s var(--ease-std);
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(56,189,248,0.3);
+}
+
+.feature-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: rgba(56,189,248,0.08);
+  border: 1px solid rgba(56,189,248,0.15);
+  font-size: 1.4rem;
+  color: var(--color-primary);
+  transition: all 0.3s var(--ease-std);
+}
+
+.feature-card:hover .feature-icon {
+  background: rgba(56,189,248,0.15);
+  box-shadow: 0 0 20px rgba(56,189,248,0.15);
+}
+
+.feature-card h4 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.feature-card p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* =============================================
+   SCROLL REVEAL ANIMATIONS
+   ============================================= */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+}
+
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-on-scroll:nth-child(2) { transition-delay: 0.1s; }
+.reveal-on-scroll:nth-child(3) { transition-delay: 0.2s; }
+.reveal-on-scroll:nth-child(4) { transition-delay: 0.3s; }
+.reveal-on-scroll:nth-child(5) { transition-delay: 0.4s; }
+.reveal-on-scroll:nth-child(6) { transition-delay: 0.5s; }
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 1024px) {
+  .tools-grid { grid-template-columns: 1fr; }
+  .features-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .devsmith-hero { padding: 5rem 0 2rem; }
+  .devsmith-hero h1 { font-size: 3rem; letter-spacing: -1px; }
+  .tool-card-icon { padding: 2rem 2rem 0; font-size: 2.5rem; }
+  .tool-card-content { padding: 1.25rem 2rem; }
+  .tool-card-footer { padding: 1rem 2rem; flex-wrap: wrap; }
+  .features-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .devsmith-hero h1 { font-size: 2.5rem; }
+  .tool-card-content { padding: 1rem 1.5rem; }
+  .tool-card-footer { padding: 1rem 1.5rem; }
+  .tool-card-footer .tool-stat { font-size: 0.7rem; }
+}

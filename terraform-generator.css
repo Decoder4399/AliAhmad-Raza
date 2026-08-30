@@ -1,9 +1,73 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@400;500;600;700;800&display=swap');
 
 :root {
-  --generator-sidebar-width: 380px;
+  --generator-sidebar-width: 400px;
   --generator-header-height: 72px;
   --config-panel-padding: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+/* Provider Selector Tabs */
+.provider-selector {
+  display: flex;
+  gap: 0.5rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border-glass);
+  background: rgba(0,0,0,0.15);
+  border-radius: 16px 16px 0 0;
+}
+
+.provider-tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--border-glass);
+  border-radius: 10px;
+  background: transparent;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s var(--ease-std);
+}
+
+.provider-tab i { font-size: 1.1rem; }
+
+.provider-tab:hover {
+  background: rgba(56,189,248,0.05);
+  border-color: rgba(56,189,248,0.2);
+  color: var(--text-secondary);
+}
+
+.provider-tab.active {
+  background: rgba(56,189,248,0.1);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  box-shadow: 0 0 15px rgba(56,189,248,0.1);
+}
+
+.provider-tab[data-provider="aws"].active {
+  background: rgba(255,153,0,0.1);
+  border-color: #ff9900;
+  color: #ff9900;
+  box-shadow: 0 0 15px rgba(255,153,0,0.1);
+}
+
+.provider-tab[data-provider="gcp"].active {
+  background: rgba(66,133,244,0.1);
+  border-color: #4285f4;
+  color: #4285f4;
+  box-shadow: 0 0 15px rgba(66,133,244,0.1);
+}
+
+.provider-tab[data-provider="azure"].active {
+  background: rgba(0,120,215,0.1);
+  border-color: #0078d4;
+  color: #0078d4;
+  box-shadow: 0 0 15px rgba(0,120,215,0.1);
 }
 
 #generator-main {
