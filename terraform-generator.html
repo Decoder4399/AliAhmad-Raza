@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terraform Generator | Ali Ahmad Raza</title>
+  <meta name="description" content="Generate production-ready Terraform configurations for AWS infrastructure. Select resources, configure options, and download ready-to-use code.">
+  
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="terraform-generator.css">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+</head>
+<body>
+
+  <div class="bg-radial-lights">
+    <div class="light-orb orb-1"></div>
+    <div class="light-orb orb-2"></div>
+    <div class="light-orb orb-3"></div>
+  </div>
+
+  <header id="header">
+    <div class="container">
+      <a href="index.html" class="logo" id="logo-link">
+        <svg viewBox="0 0 100 100">
+          <path class="logo-path" d="M 50,50 C 35,30 15,30 15,50 C 15,70 35,70 50,50 C 65,30 85,30 85,50 C 85,70 65,70 50,50 Z" />
+        </svg>
+        <span>Ali Ahmad Raza</span>
+      </a>
+      
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      <nav id="nav-menu">
+        <ul>
+          <li><a href="index.html#hero">Home</a></li>
+          <li><a href="index.html#pipeline">Pipeline</a></li>
+          <li><a href="index.html#skills">Skills</a></li>
+          <li><a href="index.html#experience">Experience</a></li>
+          <li><a href="index.html#projects">Projects</a></li>
+          <li><a href="index.html#terminal">CLI</a></li>
+          <li><a href="terraform-generator.html" class="active">TF Generator</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+          <li><a href="https://github.com/Decoder4399" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding:0.45rem 1rem;font-size:0.82rem;"><i class="fa-brands fa-github"></i> GitHub</a></li>
+          <li><a href="Ali-Devops-23june.pdf" class="btn btn-primary" style="padding:0.45rem 1rem;font-size:0.82rem;" download><i class="fa-solid fa-download"></i> Resume</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="generator-main">
+    <section class="generator-hero">
+      <div class="container">
+        <div class="generator-hero-content">
+          <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a>
+          <div class="status-badge">
+            <span class="status-pulse"></span>
+            <span>TERRAFORM GENERATOR v1.0</span>
+          </div>
+          <h1>Terraform<br><span>Script Generator</span></h1>
+          <p class="generator-description">
+            Generate production-ready AWS infrastructure code in seconds. Select your resources, configure the details, and download a complete Terraform project with modules, variables, and outputs.
+          </p>
+          <div class="generator-stats">
+            <div class="stat"><span>22</span> Resources</div>
+            <div class="stat"><span>2</span> Output Modes</div>
+            <div class="stat"><span>1</span> Click Deploy</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="generator-workspace">
+      <div class="container">
+        <div class="generator-layout">
+          
+          <aside class="resource-panel glass-card" id="resource-panel">
+            <div class="panel-header">
+              <h2><i class="devicon-terraform-plain"></i> Resource Selection</h2>
+              <button class="btn btn-secondary btn-sm" id="select-all-btn">Select All</button>
+            </div>
+            
+            <div class="resource-groups" id="resource-groups">
+              <!-- VPC & Networking -->
+              <details class="resource-group" id="group-vpc" open>
+                <summary class="group-header">
+                  <div class="group-toggle">
+                    <input type="checkbox" class="group-checkbox" data-group="vpc" id="group-check-vpc">
+                    <label for="group-check-vpc"></label>
+                  </div>
+                  <div class="group-info">
+                    <i class="devicon-amazonwebservices-plain group-icon"></i>
+                    <span class="group-name">VPC & Networking</span>
+                    <span class="group-count">6 resources</span>
+                  </div>
+                  <i class="fa-solid fa-chevron-down group-chevron"></i>
+                </summary>
+                <div class="group-content">
+                  <label class="resource-item" data-resource="vpc">
+                    <input type="checkbox" class="resource-checkbox" value="vpc">
+                    <i class="devicon-amazonwebservices-plain resource-icon"></i>
+                    <span>VPC</span>
+                    <span class="resource-desc">Virtual Private Cloud</span>
+                  </label>
+                  <label class="resource-item" data-resource="subnets">
+                    <input type="checkbox" class="resource-checkbox" value="subnets">
+                    <i class="devicon-amazonwebservices-plain resource-icon"></i>
+                    <span>Subnets</span>
+                    <span class="resource-desc">Public & Private subnets</span>
+                  </label>
+                  <label class="resource-item" data-resource="igw">
+                    <input type="checkbox" class="resource-checkbox" value="igw">
+                    <i class="devicon-amazonwebservices-plain resource-icon"></i>
+                    <span>Internet Gateway</span>
+                    <span class="resource-desc">IGW for public access</span>
+                  </label>
+                  <label class="resource-item" data-resource="nat">
+                    <input type="checkbox" class="resource-checkbox" value="nat">
+                    <i class="devicon-amazonwebservices-plain resource-icon"></i>
+                    <span>NAT Gateway</span>
+                    <span class="resource-desc">Managed NAT for private subnets</span>
+                  </label>
+                  <label class="resource-item" data-resource="route_tables">
+                    <input type="checkbox" class="resource-checkbox" value="route_tables">
+                    <i class="devicon-amazonwebservices-plain resource-icon"></i>
+                    <span>Route Tables</span>
+                    <span class="resource-desc">Public & Private routes</span>
+                  </label>
+                  <label class="resource-item" data-resource="security_groups">
+                    <input type="checkbox" class="resource-checkbox" value="security_groups">
+                    <i class="devicon-amazonwebservices-plain resource-icon"></i>
+                    <span>Security Groups</span>
+                    <span class="resource-desc">SSH, HTTP/HTTPS rules</span>
+                  </label>
+                </div>
+              </details>
+
+              <!-- Compute -->
+              <details class="resource-group" id="group-compute">
+                <summary class="group-header">
+                  <div class="group-toggle">
+                    <input type="checkbox" class="group-checkbox" data-group="compute" id="group-check-compute">
+                    <label for="group-check-compute"></label>
+                  </div>
+                  <div class="group-info">
+                    <i class="devicon-amazonwebservices-plain group-icon"></i>
+                    <span class="group-name">Compute</span>
+                    <span class="group-count">4 resources</span>
+                  </div>
+                  <i class="fa-solid fa-chevron-down group-chevron"></i>
+                </summary>
+                <div class="group-content">
+                  <label class="resource-item" data-resource="ec2">
+                    <input type="checkbox" class="resource-checkbox" value="ec2">
+                    <i class="devicon-amazonwebservices-plain resource-icon"></i>
+                    <span>EC2 Instances</span>
+                    <span class="resource-desc">Virtual servers</span>
+                  </label>
+                  <label class="resource-item" data-resource="launch_template">
+                    <input type="checkbox" class="resource-checkbox" value="launch_template">
+                    <i class="devicon-amazonwebservices-plain resource-icon"></i>
+                    <span>Launch Template</span>
+                    <span class="resource-desc">Instance launch configuration</span>
+                  </label>
+                  <label class="resource-item" data-resource="asg">
+                    <input type="checkbox" class="resource-checkbox" value="asg">
+                    <i class="devicon-amazonwebservices-plain resource-icon"></i>
+                    <span>Auto Scaling Group</span>
+                    <span class="resource-desc">Automatic scaling policies</span>
+                  </label>
+                  <label class="resource-item" data-resource="key_pair">
+                    <input type="checkbox" class="resource-checkbox" value="key_pair">
+                    <i class="devicon-amazonwebservices-plain resource-icon"></i>
+                    <span>Key Pair</span>
+                    <span class="resource-desc">SSH key for instances</span>
+                  </label>
+                </div>
+              </details>
+
+              <!-- Storage -->
+              <details class="resource-group" id="group-storage">
+                <summary class="group-header">
+                  <div class="group-toggle">
+                    <input type="checkbox" class="group-checkbox" data-group="storage" id="group-check-storage">
+                    <label for="group-check-storage"></label>
+                  </div>
+                  <div class="group-info">
+                    <i class="devicon-amazonwebservices-plain group-icon"></i>
+                    <span class="group-name">Storage</span>
+                    <span class="group-count">3 resources</span>
+                  </div>
+                  <i class="fa-solid fa-chevron-down group-chevron"></i>
+                </summary>
+                <div class="group-content">
+                  <label class="resource-item" data-resource="s3">
+                    <input type="checkbox" class="resource-checkbox" value="s3">
+                    <i class="devicon-amazonwebservices-plain resource-icon"></i>
+                    <span>S3 Buckets</span>
+                    <span class="resource-desc">Object storage with encryption</span>
+                  </label>
+                  <label class="resource-item" data-resource="ebs">
+                    <input type="checkbox" class="resource-checkbox" value="ebs">
+                    <i class="devicon-amazonwebservices-plain resource-icon"></i>
+                    <span>EBS Volumes</span>
+                    <span class="resource-desc">Block storage for EC2</span>
+                  </label>
+                  <label class="resource-item" data-resource="efs">
+                    <input type="checkbox" class="resource-checkbox" value="efs">
+                    <i class="devicon-amazonwebservices-plain resource-icon"></i>
+                    <span>EFS</span>
+                    <span class="resource-desc">Elastic file system</span>
+                  </label>
+                </div>
+              </details>
+
+              <!-- Database -->
+              <details class="resource-group" id="group-database">
+                <summary class="group-header">
+                  <div class="group-toggle">
+                    <input type="checkbox" class="group-checkbox" data-group="database" id="group-check-database">
+                    <label for="group-check-database"></label>
+                  </div>
+                  <div class="group-info">
+                    <i class="devicon-amazonwebservices-plain group-icon"></i>
+                    <span class="group-name">Database</span>
+                    <span class="group-count">3 resources</span>
+                  </div>
+                  <i class="fa-solid fa-chevron-down group-chevron"></i>
+                </summary>
+                <div class="group-content">
+                  <label class="resource-item" data-resource="rds">
+                    <input type="checkbox" class="resource-checkbox" value="rds">
+                    <i class="devicon-amazonwebservices-plain resource-icon"></i>
+                    <span>RDS Instance</span>
+                    <span class="resource-desc">Managed relational database</span>
+                  </label>
+                  <label class="resource-item" data-resource="db_subnet_group">
+                    <input type="checkbox" class="resource-checkbox" value="db_subnet_group">
+                    <i class="devicon-amazonwebservices-plain resource-icon"></i>
+                    <span>DB Subnet Group</span>
+                    <span class="resource-desc">Subnet group for RDS</span>
+                  </label>
+                  <label class="resource-item" data-resource="db_parameter_group">
+                    <input type="checkbox" class="resource-checkbox" value="db_parameter_group">
+                    <i class="devicon-amazonwebservices-plain resource-icon"></i>
+                    <span>Parameter Group</span>
+                    <span class="resource-desc">DB engine configuration</span>
+                  </label>
+                </div>
+              </details>
+
+              <!-- Kubernetes (EKS) -->
+              <details class="resource-group" id="group-eks">
+                <summary class="group-header">
+                  <div class="group-toggle">
+                    <input type="checkbox" class="group-checkbox" data-group="eks" id="group-check-eks">
+                    <label for="group-check-eks"></label>
+                  </div>
+                  <div class="group-info">
+                    <i class="devicon-kubernetes-plain group-icon" style="color:#326ce6;"></i>
+                    <span class="group-name">Kubernetes (EKS)</span>
+                    <span class="group-count">2 resources</span>
+                  </div>
+                  <i class="fa-solid fa-chevron-down group-chevron"></i>
+                </summary>
+                <div class="group-content">
+                  <label class="resource-item" data-resource="eks_cluster">
+                    <input type="checkbox" class="resource-checkbox" value="eks_cluster">
+                    <i class="devicon-kubernetes-plain resource-icon" style="color:#326ce6;"></i>
+                    <span>EKS Cluster</span>
+                    <span class="resource-desc">Managed Kubernetes control plane</span>
+                  </label>
+                  <label class="resource-item" data-resource="eks_node_group">
+                    <input type="checkbox" class="resource-checkbox" value="eks_node_group">
+                    <i class="devicon-kubernetes-plain resource-icon" style="color:#326ce6;"></i>
+                    <span>Node Group</span>
+                    <span class="resource-desc">Managed worker nodes</span>
+                  </label>
+                </div>
+              </details>
+
+              <!-- IAM -->
+              <details class="resource-group" id="group-iam">
+                <summary class="group-header">
+                  <div class="group-toggle">
+                    <input type="checkbox" class="group-checkbox" data-group="iam" id="group-check-iam">
+                    <label for="group-check-iam"></label>
+                  </div>
+                  <div class="group-info">
+                    <i class="devicon-amazonwebservices-plain group-icon"></i>
+                    <span class="group-name">IAM</span>
+                    <span class="group-count">4 resources</span>
+                  </div>
+                  <i class="fa-solid fa-chevron-down group-chevron"></i>
+                </summary>
+                <div class="group-content">
+                  <label class="resource-item" data-resource="iam_roles">
+                    <input type="checkbox" class="resource-checkbox" value="iam_roles">
+                    <i class="devicon-amazonwebservices-plain resource-icon"></i>
+                    <span>IAM Roles</span>
+                    <span class="resource-desc">EKS, EC2, Node roles</span>
+                  </label>
+                  <label class="resource-item" data-resource="iam_policies">
+                    <input type="checkbox" class="resource-checkbox" value="iam_policies">
+                    <i class="devicon-amazonwebservices-plain resource-icon"></i>
+                    <span>Policy Attachments</span>
+                    <span class="resource-desc">Managed policy attachments</span>
+                  </label>
+                  <label class="resource-item" data-resource="instance_profile">
+                    <input type="checkbox" class="resource-checkbox" value="instance_profile">
+                    <i class="devicon-amazonwebservices-plain resource-icon"></i>
+                    <span>Instance Profile</span>
+                    <span class="resource-desc">EC2 instance profile</span>
+                  </label>
+                  <label class="resource-item" data-resource="oidc">
+                    <input type="checkbox" class="resource-checkbox" value="oidc">
+                    <i class="devicon-amazonwebservices-plain resource-icon"></i>
+                    <span>OIDC Provider</span>
+                    <span class="resource-desc">EKS OIDC for IRSA</span>
+                  </label>
+                </div>
+              </details>
+            </div>
+
+            <div class="panel-footer">
+              <div class="selection-summary">
+                <span id="selected-count">0</span> of <span id="total-count">22</span> resources selected
+              </div>
+            </div>
+          </aside>
+
+          <div class="config-panel" id="config-panel">
+            <div class="glass-card config-card" id="config-card">
+              <div class="config-header">
+                <h2><i class="fa-solid fa-sliders"></i> Configuration</h2>
+                <span class="config-hint">Settings update in real-time</span>
+              </div>
+              
+              <div class="config-sections" id="config-sections">
+                <div class="config-placeholder" id="config-placeholder">
+                  <div class="placeholder-icon"><i class="devicon-terraform-plain"></i></div>
+                  <h3>Select Resources to Configure</h3>
+                  <p>Choose resources from the left panel to reveal configuration options for each category.</p>
+                  <div class="placeholder-hint">
+                    <kbd>Tip</kbd> Use "Select All" for a complete infrastructure stack
+                  </div>
+                </div>
+              </div>
+
+              <div class="output-options glass-card" id="output-options" style="display: none;">
+                <h3><i class="fa-solid fa-file-code"></i> Output Options</h3>
+                <div class="radio-group">
+                  <label class="radio-option">
+                    <input type="radio" name="output-mode" value="single" checked>
+                    <div class="radio-content">
+                      <i class="fa-solid fa-file-lines"></i>
+                      <div>
+                        <strong>Single File</strong>
+                        <span>All resources in main.tf + variables.tf + outputs.tf + provider.tf + backend.tf</span>
+                      </div>
+                    </div>
+                  </label>
+                  <label class="radio-option">
+                    <input type="radio" name="output-mode" value="modular">
+                    <div class="radio-content">
+                      <i class="fa-solid fa-folder-tree"></i>
+                      <div>
+                        <strong>Modular Structure</strong>
+                        <span>Separate modules per service (vpc, compute, storage, database, eks, iam) + root module</span>
+                      </div>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <div class="generate-actions" id="generate-actions" style="display: none;">
+                <button class="btn btn-primary btn-lg" id="generate-btn">
+                  <i class="fa-solid fa-magic"></i>
+                  <span>Generate Terraform</span>
+                </button>
+                <button class="btn btn-secondary" id="preview-btn">
+                  <i class="fa-solid fa-eye"></i>
+                  <span>Preview Files</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal" id="modal">
+      <div class="modal-header">
+        <h2 id="modal-title"><i class="devicon-terraform-plain"></i> Generated Terraform Code</h2>
+        <button class="modal-close" id="modal-close" aria-label="Close modal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-tabs" id="modal-tabs" role="tablist"></div>
+      <div class="modal-content" id="modal-content">
+        <div class="modal-empty" id="modal-empty">
+          <i class="devicon-terraform-plain"></i>
+          <p>Generate Terraform code to preview files here</p>
+        </div>
+        <div class="modal-tab-panels" id="modal-tab-panels" style="display: none;"></div>
+      </div>
+      <div class="modal-footer">
+        <div class="modal-stats" id="modal-stats"></div>
+        <div class="modal-actions">
+          <button class="btn btn-secondary" id="copy-all-btn"><i class="fa-solid fa-copy"></i> Copy All</button>
+          <button class="btn btn-primary" id="download-zip-btn"><i class="fa-solid fa-download"></i> Download .zip</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Ali Ahmad Raza. All rights reserved.</p>
+      <div class="footer-tag">
+        <span>Designed & engineered for performance</span>
+        <span style="margin:0 0.5rem;">|</span>
+        <span>Built with <i class="fa-solid fa-heart"></i> and DevOps principles</span>
+        <span style="margin:0 0.5rem;">|</span>
+        <a href="https://github.com/Decoder4399" target="_blank" rel="noopener noreferrer" style="color:var(--color-primary);"><i class="fa-brands fa-github"></i> Decoder4399</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="terraform-generator.js"></script>
+</body>
+</html>
