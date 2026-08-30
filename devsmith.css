@@ -111,7 +111,7 @@
 
 .tools-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
   gap: 2rem;
 }
 
@@ -130,6 +130,8 @@
   border-color: rgba(56,189,248,0.4);
   box-shadow: 0 20px 50px -10px rgba(0,0,0,0.6), 0 0 30px rgba(56,189,248,0.1);
 }
+.tool-card:nth-child(2):hover { border-color: rgba(36,150,237,0.4); box-shadow: 0 20px 50px -10px rgba(0,0,0,0.6), 0 0 30px rgba(36,150,237,0.1); }
+.tool-card:nth-child(3):hover { border-color: rgba(50,108,229,0.4); box-shadow: 0 20px 50px -10px rgba(0,0,0,0.6), 0 0 30px rgba(50,108,229,0.1); }
 
 .tool-card-glow {
   position: absolute;
@@ -147,6 +149,7 @@
 .tool-card:hover .tool-card-glow { opacity: 0.12; }
 .terraform-glow { background: var(--color-primary); }
 .docker-glow { background: #2496ed; }
+.k8s-glow { background: #326ce5; }
 
 .tool-card-icon {
   padding: 2.5rem 2.5rem 0;
@@ -158,6 +161,7 @@
 
 .tool-card-icon .devicon-terraform-plain { color: #7b42bc; }
 .tool-card-icon .devicon-docker-plain { color: #2496ed; }
+.tool-card-icon .devicon-kubernetes-plain { color: #326ce5; }
 
 .tool-card-content {
   padding: 1.5rem 2.5rem;
@@ -234,6 +238,8 @@
   color: var(--bg-darker);
   transform: translateX(4px);
 }
+.tool-card:nth-child(2):hover .tool-arrow { background: #2496ed; }
+.tool-card:nth-child(3):hover .tool-arrow { background: #326ce5; }
 
 /* =============================================
    FEATURES GRID
@@ -312,6 +318,7 @@
 .reveal-on-scroll:nth-child(4) { transition-delay: 0.3s; }
 .reveal-on-scroll:nth-child(5) { transition-delay: 0.4s; }
 .reveal-on-scroll:nth-child(6) { transition-delay: 0.5s; }
+.reveal-on-scroll:nth-child(7) { transition-delay: 0.6s; }
 
 /* =============================================
    RESPONSIVE

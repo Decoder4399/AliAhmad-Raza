@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kubernetes Generator | DevSmith | Ali Ahmad Raza</title>
+  <meta name="description" content="Generate production-ready Kubernetes manifests and Helm charts for any tech stack.">
+  
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="kubernetes-generator.css">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+</head>
+<body>
+
+  <div class="bg-radial-lights">
+    <div class="light-orb orb-1"></div>
+    <div class="light-orb orb-2"></div>
+    <div class="light-orb orb-3"></div>
+  </div>
+
+  <header id="header">
+    <div class="container">
+      <a href="index.html" class="logo" id="logo-link">
+        <svg viewBox="0 0 100 100">
+          <path class="logo-path" d="M 50,50 C 35,30 15,30 15,50 C 15,70 35,70 50,50 C 65,30 85,30 85,50 C 85,70 65,70 50,50 Z" />
+        </svg>
+        <span>Ali Ahmad Raza</span>
+      </a>
+      
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      <nav id="nav-menu">
+        <ul>
+          <li><a href="index.html#hero">Home</a></li>
+          <li><a href="index.html#pipeline">Pipeline</a></li>
+          <li><a href="index.html#skills">Skills</a></li>
+          <li><a href="index.html#experience">Experience</a></li>
+          <li><a href="index.html#projects">Projects</a></li>
+          <li><a href="index.html#terminal">CLI</a></li>
+          <li><a href="devsmith.html" class="active">DevSmith</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+          <li><a href="https://github.com/Decoder4399" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding:0.45rem 1rem;font-size:0.82rem;"><i class="fa-brands fa-github"></i> GitHub</a></li>
+          <li><a href="Ali-Devops-23june.pdf" class="btn btn-primary" style="padding:0.45rem 1rem;font-size:0.82rem;" download><i class="fa-solid fa-download"></i> Resume</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="k8s-main">
+    <section class="k8s-hero">
+      <div class="container">
+        <div class="k8s-hero-content">
+          <a href="devsmith.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to DevSmith</a>
+          <div class="status-badge">
+            <span class="status-pulse"></span>
+            <span>KUBERNETES GENERATOR v1.0</span>
+          </div>
+          <h1>Kubernetes<br><span>Generator</span></h1>
+          <p class="k8s-description">
+            Generate production-ready Kubernetes manifests and Helm charts for any tech stack. Deployments, Services, Ingress, ConfigMaps, and more — all with best practices built in.
+          </p>
+          <div class="k8s-stats">
+            <div class="stat"><span>26</span> Tech Stacks</div>
+            <div class="stat"><span>9</span> Resource Types</div>
+            <div class="stat"><span>2</span> Output Modes</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="k8s-workspace">
+      <div class="container">
+        <div class="k8s-layout">
+          
+          <aside class="tech-panel glass-card" id="tech-panel">
+            <div class="panel-header">
+              <h2><i class="devicon-kubernetes-plain"></i> Tech Stack Selection</h2>
+              <button class="btn btn-secondary btn-sm" id="select-all-btn">Select All</button>
+            </div>
+            
+            <div class="tech-groups" id="tech-groups">
+              <!-- Dynamically rendered from JS -->
+            </div>
+
+            <div class="panel-footer">
+              <div class="selection-summary">
+                <span id="selected-count">0</span> of <span id="total-count">26</span> stacks selected
+              </div>
+            </div>
+          </aside>
+
+          <div class="config-panel" id="config-panel">
+            <div class="glass-card config-card" id="config-card">
+              <div class="config-header">
+                <h2><i class="fa-solid fa-sliders"></i> Configuration</h2>
+                <span class="config-hint">Settings update in real-time</span>
+              </div>
+              
+              <div class="config-sections" id="config-sections">
+                <div class="config-placeholder" id="config-placeholder">
+                  <div class="placeholder-icon"><i class="devicon-kubernetes-plain"></i></div>
+                  <h3>Select Tech Stacks to Configure</h3>
+                  <p>Choose tech stacks from the left panel to reveal configuration options for each category.</p>
+                  <div class="placeholder-hint">
+                    <kbd>Tip</kbd> Select multiple stacks to generate a complete Kubernetes deployment
+                  </div>
+                </div>
+              </div>
+
+              <div class="output-options glass-card" id="output-options" style="display: none;">
+                <h3><i class="fa-solid fa-file-code"></i> Output Options</h3>
+                <div class="radio-group">
+                  <label class="radio-option">
+                    <input type="radio" name="output-mode" value="yaml" checked>
+                    <div class="radio-content">
+                      <i class="fa-solid fa-file-lines"></i>
+                      <div>
+                        <strong>Individual YAML Files</strong>
+                        <span>Separate YAML files per resource type (deployment.yaml, service.yaml, etc.) inside per-stack directories</span>
+                      </div>
+                    </div>
+                  </label>
+                  <label class="radio-option">
+                    <input type="radio" name="output-mode" value="helm">
+                    <div class="radio-content">
+                      <i class="fa-solid fa-helmet-safety"></i>
+                      <div>
+                        <strong>Helm Chart</strong>
+                        <span>Full Helm chart structure with Chart.yaml, values.yaml, and templates/ directory</span>
+                      </div>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <div class="generate-actions" id="generate-actions" style="display: none;">
+                <button class="btn btn-primary btn-lg" id="generate-btn">
+                  <i class="fa-solid fa-magic"></i>
+                  <span>Generate Kubernetes Files</span>
+                </button>
+                <button class="btn btn-secondary" id="preview-btn">
+                  <i class="fa-solid fa-eye"></i>
+                  <span>Preview Files</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal" id="modal">
+      <div class="modal-header">
+        <h2 id="modal-title"><i class="devicon-kubernetes-plain"></i> Generated Kubernetes Files</h2>
+        <button class="modal-close" id="modal-close" aria-label="Close modal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-tabs" id="modal-tabs" role="tablist"></div>
+      <div class="modal-content" id="modal-content">
+        <div class="modal-empty" id="modal-empty">
+          <i class="devicon-kubernetes-plain"></i>
+          <p>Generate Kubernetes files to preview here</p>
+        </div>
+        <div class="modal-tab-panels" id="modal-tab-panels" style="display: none;"></div>
+      </div>
+      <div class="modal-footer">
+        <div class="modal-stats" id="modal-stats"></div>
+        <div class="modal-actions">
+          <button class="btn btn-secondary" id="copy-all-btn"><i class="fa-solid fa-copy"></i> Copy All</button>
+          <button class="btn btn-primary" id="download-zip-btn"><i class="fa-solid fa-download"></i> Download .zip</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Ali Ahmad Raza. All rights reserved.</p>
+      <div class="footer-tag">
+        <span>Designed & engineered for performance</span>
+        <span style="margin:0 0.5rem;">|</span>
+        <span>Built with <i class="fa-solid fa-heart"></i> and DevOps principles</span>
+        <span style="margin:0 0.5rem;">|</span>
+        <a href="https://github.com/Decoder4399" target="_blank" rel="noopener noreferrer" style="color:var(--color-primary);"><i class="fa-brands fa-github"></i> Decoder4399</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="kubernetes-generator.js"></script>
+</body>
+</html>
