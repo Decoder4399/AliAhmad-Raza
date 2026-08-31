@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const totalStages = stages.length;
     // Map stage index to percentage width
     // 0 -> 0%, 1 -> 33%, 2 -> 66%, 3 -> 100%
-    const progressPercent = (activeIndex / (totalStages - 1)) * 84; // Align with layout margins
+    const progressPercent = (activeIndex / (totalStages - 1)) * 75;
     pipelineProgress.style.width = `${progressPercent}%`;
   }
 
@@ -224,6 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (level === 'SUCCESS') contentClass = 'success';
         else if (level === 'WARN') contentClass = 'warning';
         else if (level === 'CMD') contentClass = 'info';
+        else if (level === 'STEP') contentClass = 'step';
 
         logLine.innerHTML = `
           <span class="timestamp">[${timestamp}]</span>
@@ -239,13 +240,14 @@ document.addEventListener('DOMContentLoaded', () => {
     stage.addEventListener('click', () => {
       const stageName = stage.getAttribute('data-stage');
       
-      // Update stage active styles
+      // Update stage active styles - persist completed stages
       stages.forEach((s, idx) => {
-        if (idx <= index) {
+        if (idx === index) {
+          s.classList.add('active');
+          s.classList.remove('completed');
+        } else if (idx < index) {
           s.classList.add('completed');
           s.classList.remove('active');
-        } else {
-          s.classList.remove('completed', 'active');
         }
       });
       stage.classList.add('active');

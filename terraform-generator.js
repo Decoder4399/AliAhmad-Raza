@@ -107,6 +107,7 @@
           group:'compute', label:'EC2 Instances',
           fields:[
             {key:'instance_type',label:'Instance Type',type:'select',options:['t2.micro','t2.small','t2.medium','t3.micro','t3.small','t3.medium','t3.large','m5.large'],default:'t2.micro'},
+            {key:'use_latest_ami',label:'Auto-detect AMI',type:'checkbox',default:true},
             {key:'ami_id',label:'AMI ID',type:'text',default:'ami-0c55b159cbfafe1f0',desc:'Amazon Linux 2 (us-east-1)'},
             {key:'key_name',label:'Key Pair',type:'text',default:'my-key'},
             {key:'instance_count',label:'Count',type:'text',default:'1'},
@@ -115,7 +116,9 @@
           ],
           generate(cfg){
             const sub=cfg.subnet_source==='private'?'aws_subnet.private.id':'aws_subnet.public.id';
-            return `resource "aws_instance" "main" {\n  count         = ${cfg.instance_count}\n  ami           = "${cfg.ami_id}"\n  instance_type = "${cfg.instance_type}"\n  key_name      = "${cfg.key_name}"\n  subnet_id     = ${sub}\n  vpc_security_group_ids = [aws_security_group.main.id]\n\n  tags = {\n    Name = "\${var.project_name}-${cfg.tags}-\${count.index + 1}"\n  }\n}`
+            const ami=cfg.use_latest_ami?'data.aws_ami.latest.id':`"${cfg.ami_id}"`;
+            const keyRef=selectedResources.has('key_pair')?'aws_key_pair.main.key_name':`"${cfg.key_name}"`;
+            return `resource "aws_instance" "main" {\n  count         = ${cfg.instance_count}\n  ami           = ${ami}\n  instance_type = "${cfg.instance_type}"\n  key_name      = ${keyRef}\n  subnet_id     = ${sub}\n  vpc_security_group_ids = [aws_security_group.main.id]\n\n  tags = {\n    Name = "\${var.project_name}-${cfg.tags}-\${count.index + 1}"\n  }\n}`
           },
           outputs(){return `output "ec2_instance_ids" {\n  value = aws_instance.main[*].id\n}\n\noutput "ec2_public_ips" {\n  value = aws_instance.main[*].public_ip\n}`}
         },
@@ -124,11 +127,16 @@
           fields:[
             {key:'name_prefix',label:'Name Prefix',type:'text',default:'web-'},
             {key:'instance_type',label:'Instance Type',type:'select',options:['t2.micro','t2.small','t2.medium','t3.micro','t3.small','t3.medium'],default:'t2.small'},
+            {key:'use_latest_ami',label:'Auto-detect AMI',type:'checkbox',default:true},
             {key:'ami_id',label:'AMI ID',type:'text',default:'ami-0c55b159cbfafe1f0'},
             {key:'key_name',label:'Key Pair',type:'text',default:'my-key'},
             {key:'associate_public_ip',label:'Public IP',type:'checkbox',default:true},
           ],
-          generate(cfg){return `resource "aws_launch_template" "main" {\n  name_prefix   = "${cfg.name_prefix}"\n  image_id      = "${cfg.ami_id}"\n  instance_type = "${cfg.instance_type}"\n  key_name      = "${cfg.key_name}"\n\n  vpc_security_group_ids = [aws_security_group.main.id]\n  associate_public_ip_address = ${cfg.associate_public_ip}\n\n  tag_specifications {\n    resource_type = "instance"\n    tags = {\n      Name = "${cfg.name_prefix}instance"\n    }\n  }\n}`},
+          generate(cfg){
+            const ami=cfg.use_latest_ami?'data.aws_ami.latest.id':`"${cfg.ami_id}"`;
+            const keyRef=selectedResources.has('key_pair')?'aws_key_pair.main.key_name':`"${cfg.key_name}"`;
+            return `resource "aws_launch_template" "main" {\n  name_prefix   = "${cfg.name_prefix}"\n  image_id      = ${ami}\n  instance_type = "${cfg.instance_type}"\n  key_name      = ${keyRef}\n\n  vpc_security_group_ids = [aws_security_group.main.id]\n  associate_public_ip_address = ${cfg.associate_public_ip}\n\n  tag_specifications {\n    resource_type = "instance"\n    tags = {\n      Name = "${cfg.name_prefix}instance"\n    }\n  }\n}`
+          },
           outputs(){return `output "launch_template_id" {\n  value = aws_launch_template.main.id\n}`}
         },
         asg: {
@@ -1187,6 +1195,10 @@
       if (field.type === 'textarea') { input.rows = 3; input.style.fontFamily = 'monospace'; input.style.fontSize = '0.8rem'; }
       input.addEventListener('input', () => { configValues[activeProvider][resourceKey][field.key] = input.value; });
       wrapper.appendChild(input);
+      if (field.key === 'ami_id') {
+        wrapper.setAttribute('data-ami-input', 'true');
+        if (configValues[activeProvider][resourceKey].use_latest_ami) wrapper.style.display = 'none';
+      }
     } else if (field.type === 'checkbox') {
       const cw = document.createElement('div');
       cw.className = 'config-field-checkbox';
@@ -1195,7 +1207,14 @@
       input.checked = configValues[activeProvider][resourceKey][field.key];
       const sp = document.createElement('span');
       sp.textContent = input.checked ? 'Enabled' : 'Disabled';
-      input.addEventListener('change', () => { configValues[activeProvider][resourceKey][field.key] = input.checked; sp.textContent = input.checked ? 'Enabled' : 'Disabled'; });
+      input.addEventListener('change', () => {
+        configValues[activeProvider][resourceKey][field.key] = input.checked;
+        sp.textContent = input.checked ? 'Enabled' : 'Disabled';
+        if (field.key === 'use_latest_ami') {
+          const amiWrapper = wrapper.parentElement ? wrapper.parentElement.querySelector('.config-field[data-ami-input]') : null;
+          if (amiWrapper) amiWrapper.style.display = input.checked ? 'none' : '';
+        }
+      });
       cw.appendChild(input);
       cw.appendChild(sp);
       wrapper.appendChild(cw);
@@ -1279,10 +1298,17 @@
   }
 
   function generateMainTf(provider) {
-    let parts = [];
+    const parts = [];
     for (const resKey of selectedResources) {
       const def = provider.resources[resKey];
       parts.push(def.generate(configValues[activeProvider][resKey]));
+    }
+    const needsAmi = [...selectedResources].some(r => {
+      const def = provider.resources[r];
+      return def && def.fields && def.fields.some(f => f.key === 'use_latest_ami') && configValues[activeProvider][r].use_latest_ami;
+    });
+    if (needsAmi) {
+      parts.unshift(`data "aws_ami" "latest" {\n  most_recent = true\n  owners      = ["amazon"]\n\n  filter {\n    name   = "name"\n    values = ["amzn2-ami-hvm-*-x86_64-gp2"]\n  }\n\n  filter {\n    name   = "virtualization-type"\n    values = ["hvm"]\n  }\n}`);
     }
     return parts.join('\n\n');
   }
@@ -1318,10 +1344,17 @@
   }
 
   function generateModuleMain(provider, groupId, resources) {
-    let parts = [];
+    const parts = [];
     for (const resKey of resources) {
       const def = provider.resources[resKey];
       parts.push(def.generate(configValues[activeProvider][resKey]));
+    }
+    const needsAmi = resources.some(r => {
+      const def = provider.resources[r];
+      return def && def.fields && def.fields.some(f => f.key === 'use_latest_ami') && configValues[activeProvider][r].use_latest_ami;
+    });
+    if (needsAmi) {
+      parts.unshift(`data "aws_ami" "latest" {\n  most_recent = true\n  owners      = ["amazon"]\n\n  filter {\n    name   = "name"\n    values = ["amzn2-ami-hvm-*-x86_64-gp2"]\n  }\n\n  filter {\n    name   = "virtualization-type"\n    values = ["hvm"]\n  }\n}`);
     }
     return parts.join('\n\n');
   }
